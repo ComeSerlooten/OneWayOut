@@ -14,7 +14,7 @@ public class InteractableObject : Item
     // Start is called before the first frame update
     void Start()
     {
-        CheckConditions();
+        StartCoroutine(CheckConditions());
     }
 
     public virtual bool ActivationCondition()
@@ -28,14 +28,22 @@ public class InteractableObject : Item
         yield return new WaitForSeconds(0.25f);
     }
 
-    void ActivationSequence()
+    public bool Use(Item user)
     {
-
+        if(user == target_ && activatable && !(triggerOnce && triggered))
+        {
+            TriggerSequence.Invoke();
+            ActivationSequence();
+            triggered = true;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    virtual public void ActivationSequence()
+    { }
+
 }
