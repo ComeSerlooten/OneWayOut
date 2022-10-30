@@ -13,11 +13,13 @@ public class SelectorRay : MonoBehaviour
 
     public bool doRay = true;
     bool activeRay = false;
+    [SerializeField] LayerMask rayLayers;
 
     // Start is called before the first frame update
     void Start()
     {
         inView = null;
+
         StartCoroutine(SearchForItem());
     }
 
@@ -33,12 +35,12 @@ public class SelectorRay : MonoBehaviour
             bool found = false;
             while (dist < maxDistance)
             {
-                RaycastHit[] hits = Physics.RaycastAll(cameraAim.position + cameraAim.forward*.5f, cameraAim.forward, dist);
+                RaycastHit[] hits = Physics.SphereCastAll(cameraAim.position + cameraAim.forward*.5f, .1f, cameraAim.forward, dist, rayLayers);
                 List<RaycastHit> l = new List<RaycastHit>();
 
                 foreach (RaycastHit h in hits)
                 {
-                    if (h.transform.GetComponent<InteractableObject>()) l.Add(h);
+                    if (h.transform.GetComponent<Glow>()) l.Add(h);
                 }
 
                 if (l.Count > 0)

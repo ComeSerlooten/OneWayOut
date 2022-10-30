@@ -14,13 +14,10 @@ public class Grabber : MonoBehaviour
     public bool isGrabbing = false;
     [Range(0, 5f)] public float grabDistance = 2;
     [Range(0, 5f)] public float throwStrength = 2;
+    [Range(-.5f, .5f)] public float holdHeight = -.4f;
 
 
     private bool originalGravityState = false;
-
-    public float debugForceThrow = 1;
-    public bool debugToggleHold = false;
-    public Grabbable debugItem;
 
     SelectorRay ray;
 
@@ -31,14 +28,25 @@ public class Grabber : MonoBehaviour
         ray = GetComponent<SelectorRay>();
     }
 
+    void AdjustHoldPosition()
+    {
+
+        float holdPos = (cam.localRotation.eulerAngles.x > 90) ? holdHeight : holdHeight * (1 - cam.localRotation.eulerAngles.x / 90);
+        holdPositionner.localPosition = new Vector3(holdPositionner.localPosition.x, holdPos, holdPositionner.localPosition.z);
+        
+    }
+
     void Drop(float throwForce = 0)
     {   
         isGrabbing = false;
         grabbedObject.Dropped();
-        grabbedObject.rb.useGravity = originalGravityState;
-        grabbedObject.rb.AddForce((cam.forward * 3 + Vector3.up) * (throwForce+0.5f), ForceMode.Impulse);
-
         StopCoroutine(KeepInPlace());
+
+        DOTween.Kill(grabbedObject);
+
+        grabbedObject.rb.useGravity = originalGravityState;
+        grabbedObject.rb.AddForce((cam.forward * 3 + Vector3.up*.5f) * (throwForce+0.5f), ForceMode.Impulse);
+        
         grabbedObject.GetComponent<Collider>().enabled = true;
         grabbedObject = null;
     }
@@ -83,7 +91,7 @@ public class Grabber : MonoBehaviour
         {
             if (!isGrabbing && ray.inView != null)
             {
-                if(Input.GetMouseButtonDown(0))
+                if(Input.GetMouseButtonDown(0) && ray.inView.GetComponent<Grabbable>())
                 {
                     Vector3 toRaySelected = (ray.inView.transform.position - cam.transform.position);
                     if (toRaySelected.magnitude < grabDistance)
@@ -105,5 +113,7 @@ public class Grabber : MonoBehaviour
             }
         }
 
+
+        AdjustHoldPosition();
     }
 }
