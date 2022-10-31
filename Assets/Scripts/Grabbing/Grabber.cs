@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(SelectorRay))]
 public class Grabber : MonoBehaviour
 {
-    [SerializeField] Grabbable grabbedObject;
+    [SerializeField] public Grabbable grabbedObject;
     [SerializeField] Transform cam;
     [SerializeField] Transform holdPositionner;
     [SerializeField] Canvas itemUseCanvas;
@@ -16,6 +17,8 @@ public class Grabber : MonoBehaviour
     [Range(0, 5f)] public float throwStrength = 2;
     [Range(-.5f, .5f)] public float holdHeight = -.4f;
 
+    public UnityEvent onGrab;
+    public UnityEvent onDrop;
 
     private bool originalGravityState = false;
 
@@ -36,8 +39,9 @@ public class Grabber : MonoBehaviour
         
     }
 
-    void Drop(float throwForce = 0)
-    {   
+    public void Drop(float throwForce = 0)
+    {
+        onDrop.Invoke();
         isGrabbing = false;
         grabbedObject.Dropped();
         StopCoroutine(KeepInPlace());
@@ -51,7 +55,7 @@ public class Grabber : MonoBehaviour
         grabbedObject = null;
     }
 
-    void Pickup(Grabbable grab)
+    public void Pickup(Grabbable grab)
     {
         if(grab.isGrabbable && !isGrabbing)
         {
@@ -97,6 +101,7 @@ public class Grabber : MonoBehaviour
                     if (toRaySelected.magnitude < grabDistance)
                     {
                         Pickup(ray.inView.GetComponent<Grabbable>());
+                        onGrab.Invoke();
                     }
                 }               
             }
@@ -112,6 +117,8 @@ public class Grabber : MonoBehaviour
                 }
             }
         }
+
+
 
 
         AdjustHoldPosition();

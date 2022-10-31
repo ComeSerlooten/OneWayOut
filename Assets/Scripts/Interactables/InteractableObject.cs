@@ -30,6 +30,7 @@ public class InteractableObject : Item
 
     public bool Use(Item user)
     {
+        Debug.Log(user);
         if(user == target_ && activatable && !(triggerOnce && triggered))
         {
             TriggerSequence.Invoke();
