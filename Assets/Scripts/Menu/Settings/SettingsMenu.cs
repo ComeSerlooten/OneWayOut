@@ -13,8 +13,14 @@ public class SettingsMenu : MonoBehaviour
 
     public TMPro.TMP_Dropdown resolutionDropDown;
 
+    public TextMeshProUGUI sensiTxt;
+    private float sens;
+
     void Start()
     {
+        sens = 0.5f;
+        sensiTxt.text = sens.ToString("0.00");
+
         resolutions = Screen.resolutions;
 
         resolutionDropDown.ClearOptions();
@@ -51,9 +57,11 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = enable;
     }
 
-    public void SetSensitivity(float sens)
+    public void SetSensitivity(float value)
     {
+        sens = value;
         Debug.Log("Sensitivity is set to : " + sens);
+        sensiTxt.text = sens.ToString("0.00");
     }
 
     public void SetResolution(int index)
