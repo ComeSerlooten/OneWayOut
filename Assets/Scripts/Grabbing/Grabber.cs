@@ -10,7 +10,6 @@ public class Grabber : MonoBehaviour
     [SerializeField] public Grabbable grabbedObject;
     [SerializeField] Transform cam;
     [SerializeField] Transform holdPositionner;
-    [SerializeField] Canvas itemUseCanvas;
     public bool canGrab = true;
     public bool isGrabbing = false;
     [Range(0, 5f)] public float grabDistance = 2;
@@ -41,7 +40,6 @@ public class Grabber : MonoBehaviour
 
     public void Drop(float throwForce = 0)
     {
-        onDrop.Invoke();
         isGrabbing = false;
         grabbedObject.Dropped();
         StopCoroutine(KeepInPlace());
@@ -53,6 +51,7 @@ public class Grabber : MonoBehaviour
         
         grabbedObject.GetComponent<Collider>().enabled = true;
         grabbedObject = null;
+        onDrop.Invoke();
     }
 
     public void Pickup(Grabbable grab)

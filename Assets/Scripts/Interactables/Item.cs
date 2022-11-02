@@ -5,7 +5,26 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     public string itemName;
+    Vector3 initPosition;
+    Quaternion initRotation;
 
+    private void Awake()
+    {
+        initPosition = transform.position;
+        initRotation = transform.rotation;
+    }
+
+    public void ResetItem()
+    {
+        if(GetComponent<Rigidbody>())
+        {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
+        transform.position = initPosition;
+        transform.rotation = initRotation;
+    }
 
     public bool OnUse(Item subject)
     {

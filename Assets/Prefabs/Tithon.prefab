@@ -327,7 +327,6 @@ MonoBehaviour:
   grabbedObject: {fileID: 0}
   cam: {fileID: 0}
   holdPositionner: {fileID: 0}
-  itemUseCanvas: {fileID: 0}
   canGrab: 1
   isGrabbing: 0
   grabDistance: 2
@@ -375,6 +374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969dc7ad192ccbb42998cee093cdc237, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useItemPrompt: {fileID: 0}
+  keyToUse: 101
 --- !u!1 &3035709517795903680
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +425,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3035709517795903680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -521,7 +522,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7616301619501170419}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -534,7 +535,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 644411077d40c85439b53248f012a450, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

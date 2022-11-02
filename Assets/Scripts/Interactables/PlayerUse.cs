@@ -31,7 +31,7 @@ public class PlayerUse : MonoBehaviour
     public void GrabberUpdate(bool isDropping)
     {
         itemCarried = !isDropping;
-        if (!isDropping) useItemPrompt.gameObject.SetActive(false);
+        if (!itemCarried) useItemPrompt.gameObject.SetActive(false);
     }
 
     public bool TryUsing(GameObject first, GameObject second)
@@ -52,7 +52,8 @@ public class PlayerUse : MonoBehaviour
     {
         if(itemCarried)
         {
-            attemptableUse = (grab.grabbedObject) ? (selector.inView ? (grab.grabbedObject.GetComponent<InteractableObject>() || selector.inView.GetComponent<InteractableObject>()) : false) : false;
+            attemptableUse = (grab.grabbedObject) ? (selector.inView ? (grab.grabbedObject.GetComponent<InteractableObject>() || selector.inView.GetComponent<InteractableObject>()) : false) : false ;
+            if(grab.grabbedObject && selector.inView) if (selector.inView.GetComponent<InteractableObject>() && grab.grabbedObject.GetComponent<InteractableObject>()) attemptableUse = false;
             useItemPrompt.gameObject.SetActive(attemptableUse);
             
 

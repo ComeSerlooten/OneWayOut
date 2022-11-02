@@ -5,7 +5,8 @@ using DG.Tweening;
 
 public class Glow : MonoBehaviour
 {
-    [SerializeField] Color glowColor_;
+
+    [SerializeField] Color glowColor_ = new Color32(0, 210, 255,0);
     [SerializeField] [Range(0.05f, 5f)] float glowTime = 2f;
     [Range(0.0f, 1f)] public float intensity = 0;
     [Range(0, 20f)] public float maxViewDistance = 10f;
@@ -15,16 +16,17 @@ public class Glow : MonoBehaviour
     public bool glow = false;
     public bool isGlowing = false;
 
+    [Space] [SerializeField] GameObject _target;
     Renderer render;
     Material mat;
     Tweener tw = null;
-    public bool shineUp = false;
-    bool twAlive = false;
+    bool shineUp = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        render = GetComponent<Renderer>();
+        if (_target == null) _target = this.gameObject;
+        render = _target.GetComponent<Renderer>();
         mat = render.material;
 
         mat.EnableKeyword("_EMISSION");
@@ -32,7 +34,7 @@ public class Glow : MonoBehaviour
 
     float MaxIntensity()
     {
-        float distanceToObs = (observer.position - transform.position).magnitude;
+        float distanceToObs = (observer.position - _target.transform.position).magnitude;
         float distRatio = Mathf.Pow(Mathf.Clamp(maxViewDistance / distanceToObs, 0, 1),3);
         distRatio = Mathf.Clamp(distRatio, 0, 1);
         //if (distanceToObs > maxViewDistance) return 0;
@@ -44,12 +46,10 @@ public class Glow : MonoBehaviour
     IEnumerator DoGlow()
     {
         DOTween.Kill(this.mat);
-        twAlive = false;
 
         isGlowing = true;
         while(glow)
         {
-            twAlive = true;
 
             tw = DOTween.To(() => intensity, x => intensity = x, 1, glowTime/2)
                 .SetEase(Ease.InOutSine)
@@ -57,7 +57,6 @@ public class Glow : MonoBehaviour
                 {
                     tw = DOTween.To(() => intensity, x => intensity = x, 0, glowTime / 2)
                     .SetEase(Ease.InOutSine)
-                    .OnComplete(() => { twAlive = false; })
                     .OnStart(() => { shineUp = false; });
                 })
                 .OnStart(() => { shineUp = true; });
@@ -70,7 +69,6 @@ public class Glow : MonoBehaviour
                 {
                     breakWhile = true;
                     DOTween.Kill(this.mat);
-                    twAlive = false;
                     break;
                 }
                 yield return new WaitForSeconds((glowTime)/10);
@@ -85,7 +83,6 @@ public class Glow : MonoBehaviour
                 {
                     shineUp = false;
                     DOTween.Kill(this.mat);
-                    twAlive = false;
                     mat.SetColor("_EmissionColor", glowColor_ * 0);
                     isGlowing = false;
                 });
@@ -99,7 +96,6 @@ public class Glow : MonoBehaviour
         if (glow && !isGlowing)
         {
             StopAllCoroutines();
-            twAlive = false;
             StartCoroutine(DoGlow());
         }
 
