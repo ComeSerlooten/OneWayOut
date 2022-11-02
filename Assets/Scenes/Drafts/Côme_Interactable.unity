@@ -198,7 +198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: BlockTest_White
-  initPosition: {x: 0, y: 0, z: 0}
   target_: {fileID: 1991902953}
   TriggerSequence:
     m_PersistentCalls:
@@ -305,7 +304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13981979}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.72, y: 1.89, z: 1.08}
+  m_LocalPosition: {x: 1.47, y: 1.22, z: -0.55}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -325,7 +324,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: BlockTest_White
-  initPosition: {x: 0, y: 0, z: 0}
   target_: {fileID: 1088857622}
   TriggerSequence:
     m_PersistentCalls:
@@ -897,7 +895,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238822272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.529, y: 1.89, z: 1.08}
+  m_LocalPosition: {x: 0.27900028, y: 1.22, z: -0.5499999}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -917,7 +915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: BlockTest_Black
-  initPosition: {x: 0, y: 0, z: 0}
   target_: {fileID: 13981982}
   TriggerSequence:
     m_PersistentCalls:
@@ -1679,7 +1676,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: FixedCube
-  initPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1088857623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1779,7 +1775,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1109854393}
   m_Layer: 0
-  m_Name: CraftCenter (1)
+  m_Name: CraftSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1874,7 +1870,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: BlockTest_Grey
-  initPosition: {x: 0, y: 0, z: 0}
   target_: {fileID: 0}
   TriggerSequence:
     m_PersistentCalls:
@@ -1981,7 +1976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150132129}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.1289997, y: 1.89, z: 1.08}
+  m_LocalPosition: {x: 0.8790002, y: 1.22, z: -0.5499999}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2285,8 +2280,7 @@ MonoBehaviour:
   currentRecipeItems: []
   craftingCenter: {fileID: 2088949483}
   itemToSpawn: {fileID: 4623805885730146710, guid: 0101cf05f733bf74c94654e574d35504, type: 3}
-  spawnLocation: {x: 0, y: 0, z: 0}
-  spawnRotation: {x: 0, y: 0, z: 0}
+  spawnLocation: {fileID: 1109854393}
   craftingEffect: {fileID: 0}
   runCheck: 1
 --- !u!23 &1543303497
@@ -2675,7 +2669,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Cube Heavy
-  initPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &2088949482
 GameObject:
   m_ObjectHideFlags: 0

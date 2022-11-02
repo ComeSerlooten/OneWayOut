@@ -10,6 +10,7 @@ public class Grabber : MonoBehaviour
     [SerializeField] public Grabbable grabbedObject;
     [SerializeField] Transform cam;
     [SerializeField] Transform holdPositionner;
+    [SerializeField] Transform grabItemPrompt;
     public bool canGrab = true;
     public bool isGrabbing = false;
     [Range(0, 5f)] public float grabDistance = 2;
@@ -94,18 +95,24 @@ public class Grabber : MonoBehaviour
         {
             if (!isGrabbing && ray.inView != null)
             {
-                if(Input.GetMouseButtonDown(0) && ray.inView.GetComponent<Grabbable>())
+                if (ray.inView.GetComponent<Grabbable>())
                 {
-                    Vector3 toRaySelected = (ray.inView.transform.position - cam.transform.position);
-                    if (toRaySelected.magnitude < grabDistance)
+                    grabItemPrompt.gameObject.SetActive(true);
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        Pickup(ray.inView.GetComponent<Grabbable>());
-                        onGrab.Invoke();
+                        grabItemPrompt.gameObject.SetActive(false);
+                        Vector3 toRaySelected = (ray.inView.transform.position - cam.transform.position);
+                        if (toRaySelected.magnitude < grabDistance)
+                        {
+                            Pickup(ray.inView.GetComponent<Grabbable>());
+                            onGrab.Invoke();
+                        }
                     }
-                }               
+                }       
             }
             else
             {
+                grabItemPrompt.gameObject.SetActive(false);
                 if (Input.GetMouseButtonDown(0) && grabbedObject != null)
                 {
                     Drop(0);

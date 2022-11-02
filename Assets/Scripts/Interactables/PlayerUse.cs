@@ -52,10 +52,11 @@ public class PlayerUse : MonoBehaviour
     {
         if(itemCarried)
         {
-            attemptableUse = (grab.grabbedObject) ? (selector.inView ? (grab.grabbedObject.GetComponent<InteractableObject>() || selector.inView.GetComponent<InteractableObject>()) : false) : false ;
-            if(grab.grabbedObject && selector.inView) if (selector.inView.GetComponent<InteractableObject>() && grab.grabbedObject.GetComponent<InteractableObject>()) attemptableUse = false;
+            bool heldItems = (grab.grabbedObject && selector.inView);
+            //attemptableUse = (grab.grabbedObject) ? (selector.inView ? (grab.grabbedObject.GetComponent<InteractableObject>() || selector.inView.GetComponent<InteractableObject>()) : false) : false ;
+            attemptableUse = heldItems ? ((selector.inView.GetComponent<Item>()) ? (grab.grabbedObject.GetComponent<InteractableObject>() || selector.inView.GetComponent<InteractableObject>()) : false) : false;
+            //if(grab.grabbedObject && selector.inView) if (selector.inView.GetComponent<InteractableObject>() == grab.grabbedObject.GetComponent<InteractableObject>()) attemptableUse = false;
             useItemPrompt.gameObject.SetActive(attemptableUse);
-            
 
             if(attemptableUse)
             {
