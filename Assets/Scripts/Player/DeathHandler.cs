@@ -7,15 +7,15 @@ public class DeathHandler : MonoBehaviour
     public GameObject deathPannel;
     public GameObject spawnPoint;
     public GameObject player;
-    private Grabbable[] grabbables;
+    private Item[] items;
 
     private void Awake()
     {
-        grabbables = FindObjectsOfType(typeof(Grabbable)) as Grabbable[];
+        items = FindObjectsOfType(typeof(Item)) as Item[];
         //log :
-        foreach(Grabbable grabbable in grabbables)
+        foreach(Item item in Item)
         {
-            Debug.Log("This item is in the list : " + grabbable);
+            Debug.Log("This item is in the list : " + item);
         }
     }
 
@@ -44,9 +44,9 @@ public class DeathHandler : MonoBehaviour
 
     private void ResetPositionOfAllObject()
     {
-        foreach (Grabbable grabbable in grabbables)
+        foreach (Item item in items)
         {
-            //grabbable.transform.position = grabbable.originalPos; 
+            //item.transform.position = item.originalPos; 
         }
     }
 
