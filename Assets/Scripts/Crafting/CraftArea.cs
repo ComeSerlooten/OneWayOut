@@ -22,9 +22,8 @@ public class CraftArea : MonoBehaviour
     [SerializeField] ParticleSystem craftingEffect;
     [Space]
     public bool runCheck = true;
-    bool checkRunning = false;
-    bool initialRunState;
-
+    public bool checkRunning = false;
+    public bool initialRunState;
 
     IEnumerator CheckForItems()
     {
@@ -60,7 +59,7 @@ public class CraftArea : MonoBehaviour
             }
         }
 
-        if (AllItemsPlaced() && !(singleUse && crafted)) StartCoroutine(RecipeStartDelay());
+        if (AllItemsPlaced() && !(singleUse && crafted) && canCraft) StartCoroutine(RecipeStartDelay());
     }
 
      bool AllItemsPlaced()
@@ -75,6 +74,7 @@ public class CraftArea : MonoBehaviour
 
     IEnumerator RecipeStartDelay()
     {
+        StopCoroutine(CheckForItems());
         initialRunState = runCheck;
         runCheck = false;
         yield return new WaitForSeconds(1f);
@@ -85,14 +85,18 @@ public class CraftArea : MonoBehaviour
 
     IEnumerator AssembleIngredients()
     {
-        
         foreach(Item i in currentRecipeItems)
         {
+            if (i.GetComponent<Collider>()) i.GetComponent<Collider>().enabled = false;
             Vector3 toCenter = (craftingCenter.position - i.transform.position).normalized;
             toCenter.y = 0;
 
             i.transform.DOJump(craftingCenter.position, .5f, 1, 1).SetEase(Ease.InOutSine);
         }
+
+        itemsInArea.Clear();
+        //UpdateCompletion();
+
         yield return new WaitForSeconds(.95f);
         foreach (Item i in currentRecipeItems)
         {
@@ -100,9 +104,6 @@ public class CraftArea : MonoBehaviour
         }
 
         RecipeOutput();
-        CheckForItems();
-
-        runCheck = initialRunState;
 
         yield break;
     }
@@ -113,10 +114,25 @@ public class CraftArea : MonoBehaviour
         {
             i.transform.DOKill();
             i.ResetItem();
+            if (i.GetComponent<Collider>()) i.GetComponent<Collider>().enabled = true;
         }
-
+        StartCoroutine(RetryDelay());
+        
         Instantiate(itemToSpawn, spawnLocation.position, spawnLocation.rotation);
         if (craftingEffect) Instantiate(craftingEffect, spawnLocation.position, spawnLocation.rotation);
+        
+    }
+
+    IEnumerator RetryDelay()
+    {
+        currentRecipeItems.Clear();
+        itemsInArea.Clear();
+
+        yield return new WaitForSeconds(.5f);
+
+        runCheck = initialRunState;
+
+        yield break;
     }
 
     // Update is called once per frame
