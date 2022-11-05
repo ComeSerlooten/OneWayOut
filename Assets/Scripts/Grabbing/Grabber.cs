@@ -10,7 +10,7 @@ public class Grabber : MonoBehaviour
     [SerializeField] public Grabbable grabbedObject;
     [SerializeField] Transform cam;
     [SerializeField] Transform holdPositionner;
-    [SerializeField] Canvas itemUseCanvas;
+    [SerializeField] Transform grabItemPrompt;
     public bool canGrab = true;
     public bool isGrabbing = false;
     [Range(0, 5f)] public float grabDistance = 2;
@@ -21,6 +21,8 @@ public class Grabber : MonoBehaviour
     public UnityEvent onDrop;
 
     private bool originalGravityState = false;
+    public int holdingLayerIndex;
+    int layerOfItem;
 
     SelectorRay ray;
 
@@ -41,9 +43,14 @@ public class Grabber : MonoBehaviour
 
     public void Drop(float throwForce = 0)
     {
-        onDrop.Invoke();
         isGrabbing = false;
         grabbedObject.Dropped();
+
+        foreach(Transform t in grabbedObject.GetComponentsInChildren<Transform>())
+        {
+            t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(layerOfItem));
+        }
+
         StopCoroutine(KeepInPlace());
 
         DOTween.Kill(grabbedObject);
@@ -51,8 +58,13 @@ public class Grabber : MonoBehaviour
         grabbedObject.rb.useGravity = originalGravityState;
         grabbedObject.rb.AddForce((cam.forward * 3 + Vector3.up*.5f) * (throwForce+0.5f), ForceMode.Impulse);
         
-        grabbedObject.GetComponent<Collider>().enabled = true;
+        foreach(Collider c in grabbedObject.GetComponentsInChildren<Collider>())
+        {
+            c.enabled = true;
+        }
+        
         grabbedObject = null;
+        onDrop.Invoke();
     }
 
     public void Pickup(Grabbable grab)
@@ -60,11 +72,22 @@ public class Grabber : MonoBehaviour
         if(grab.isGrabbable && !isGrabbing)
         {
             grabbedObject = grab;
+            layerOfItem = grab.gameObject.layer;
+
+            foreach (Transform t in grabbedObject.GetComponentsInChildren<Transform>())
+            {
+                t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(holdingLayerIndex));
+            }
+
             isGrabbing = true;
             originalGravityState = grab.rb.useGravity;
             grab.rb.useGravity = false;
             grab.transform.DOMove(holdPositionner.position, .25f).SetEase(Ease.InOutSine).OnComplete(() => { StartCoroutine(KeepInPlace()); });
-            grab.GetComponent<Collider>().enabled = false;
+
+            foreach (Collider c in grabbedObject.GetComponentsInChildren<Collider>())
+            {
+                c.enabled = false;
+            }
         }
     }
 
@@ -95,18 +118,24 @@ public class Grabber : MonoBehaviour
         {
             if (!isGrabbing && ray.inView != null)
             {
-                if(Input.GetMouseButtonDown(0) && ray.inView.GetComponent<Grabbable>())
+                if (ray.inView.GetComponent<Grabbable>())
                 {
-                    Vector3 toRaySelected = (ray.inView.transform.position - cam.transform.position);
-                    if (toRaySelected.magnitude < grabDistance)
+                    grabItemPrompt.gameObject.SetActive(true);
+                    if (Input.GetMouseButtonDown(0))
                     {
-                        Pickup(ray.inView.GetComponent<Grabbable>());
-                        onGrab.Invoke();
+                        grabItemPrompt.gameObject.SetActive(false);
+                        Vector3 toRaySelected = (ray.inView.transform.position - cam.transform.position);
+                        if (toRaySelected.magnitude < grabDistance)
+                        {
+                            Pickup(ray.inView.GetComponent<Grabbable>());
+                            onGrab.Invoke();
+                        }
                     }
-                }               
+                }       
             }
             else
             {
+                grabItemPrompt.gameObject.SetActive(false);
                 if (Input.GetMouseButtonDown(0) && grabbedObject != null)
                 {
                     Drop(0);

@@ -31,7 +31,7 @@ public class PlayerUse : MonoBehaviour
     public void GrabberUpdate(bool isDropping)
     {
         itemCarried = !isDropping;
-        if (!isDropping) useItemPrompt.gameObject.SetActive(false);
+        if (!itemCarried) useItemPrompt.gameObject.SetActive(false);
     }
 
     public bool TryUsing(GameObject first, GameObject second)
@@ -52,9 +52,11 @@ public class PlayerUse : MonoBehaviour
     {
         if(itemCarried)
         {
-            attemptableUse = (grab.grabbedObject) ? (selector.inView ? (grab.grabbedObject.GetComponent<InteractableObject>() || selector.inView.GetComponent<InteractableObject>()) : false) : false;
+            bool heldItems = (grab.grabbedObject && selector.inView);
+            //attemptableUse = (grab.grabbedObject) ? (selector.inView ? (grab.grabbedObject.GetComponent<InteractableObject>() || selector.inView.GetComponent<InteractableObject>()) : false) : false ;
+            attemptableUse = heldItems ? ((selector.inView.GetComponent<Item>()) ? (grab.grabbedObject.GetComponent<InteractableObject>() || selector.inView.GetComponent<InteractableObject>()) : false) : false;
+            //if(grab.grabbedObject && selector.inView) if (selector.inView.GetComponent<InteractableObject>() == grab.grabbedObject.GetComponent<InteractableObject>()) attemptableUse = false;
             useItemPrompt.gameObject.SetActive(attemptableUse);
-            
 
             if(attemptableUse)
             {
@@ -64,6 +66,28 @@ public class PlayerUse : MonoBehaviour
                     if(!use) TryUsing(selector.inView.gameObject, grab.grabbedObject.gameObject);
                 }
             }
+        }
+        else
+        {
+            if(selector.inView)
+            {
+                if(selector.inView.GetComponent<UseEmptyHand>())
+                {
+                    if(selector.inView.GetComponent<UseEmptyHand>().canBeUsed)
+                    {
+                        useItemPrompt.gameObject.SetActive(true);
+                        if (Input.GetKeyDown(keyToUse))
+                        {
+                            selector.inView.GetComponent<UseEmptyHand>().Use();
+                        }
+                    }
+                    else useItemPrompt.gameObject.SetActive(false);
+
+
+                }
+                else useItemPrompt.gameObject.SetActive(false);
+            }
+            else useItemPrompt.gameObject.SetActive(false);
         }
         
     }
