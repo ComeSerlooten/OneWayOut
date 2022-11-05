@@ -67,6 +67,28 @@ public class PlayerUse : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            if(selector.inView)
+            {
+                if(selector.inView.GetComponent<UseEmptyHand>())
+                {
+                    if(selector.inView.GetComponent<UseEmptyHand>().canBeUsed)
+                    {
+                        useItemPrompt.gameObject.SetActive(true);
+                        if (Input.GetKeyDown(keyToUse))
+                        {
+                            selector.inView.GetComponent<UseEmptyHand>().Use();
+                        }
+                    }
+                    else useItemPrompt.gameObject.SetActive(false);
+
+
+                }
+                else useItemPrompt.gameObject.SetActive(false);
+            }
+            else useItemPrompt.gameObject.SetActive(false);
+        }
         
     }
 }

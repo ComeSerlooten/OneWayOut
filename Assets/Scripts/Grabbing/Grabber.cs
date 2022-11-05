@@ -21,6 +21,8 @@ public class Grabber : MonoBehaviour
     public UnityEvent onDrop;
 
     private bool originalGravityState = false;
+    public int holdingLayerIndex;
+    int layerOfItem;
 
     SelectorRay ray;
 
@@ -43,6 +45,12 @@ public class Grabber : MonoBehaviour
     {
         isGrabbing = false;
         grabbedObject.Dropped();
+
+        foreach(Transform t in grabbedObject.GetComponentsInChildren<Transform>())
+        {
+            t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(layerOfItem));
+        }
+
         StopCoroutine(KeepInPlace());
 
         DOTween.Kill(grabbedObject);
@@ -50,7 +58,11 @@ public class Grabber : MonoBehaviour
         grabbedObject.rb.useGravity = originalGravityState;
         grabbedObject.rb.AddForce((cam.forward * 3 + Vector3.up*.5f) * (throwForce+0.5f), ForceMode.Impulse);
         
-        grabbedObject.GetComponent<Collider>().enabled = true;
+        foreach(Collider c in grabbedObject.GetComponentsInChildren<Collider>())
+        {
+            c.enabled = true;
+        }
+        
         grabbedObject = null;
         onDrop.Invoke();
     }
@@ -60,11 +72,22 @@ public class Grabber : MonoBehaviour
         if(grab.isGrabbable && !isGrabbing)
         {
             grabbedObject = grab;
+            layerOfItem = grab.gameObject.layer;
+
+            foreach (Transform t in grabbedObject.GetComponentsInChildren<Transform>())
+            {
+                t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(holdingLayerIndex));
+            }
+
             isGrabbing = true;
             originalGravityState = grab.rb.useGravity;
             grab.rb.useGravity = false;
             grab.transform.DOMove(holdPositionner.position, .25f).SetEase(Ease.InOutSine).OnComplete(() => { StartCoroutine(KeepInPlace()); });
-            grab.GetComponent<Collider>().enabled = false;
+
+            foreach (Collider c in grabbedObject.GetComponentsInChildren<Collider>())
+            {
+                c.enabled = false;
+            }
         }
     }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class CraftArea : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class CraftArea : MonoBehaviour
     public List<Item> itemsInArea;
     public List<Item> currentRecipeItems;
     [SerializeField] Transform craftingCenter;
+    public bool resetComponents = false;
     [Space(20)]
     [Header("Output of the Recipe")]
     [SerializeField] GameObject itemToSpawn;
@@ -65,7 +67,8 @@ public class CraftArea : MonoBehaviour
      bool AllItemsPlaced()
     {
         bool allDone = true;
-        foreach (RecipeItem r in recipe)
+        if (recipe.Count == 0) allDone = false;
+        else foreach (RecipeItem r in recipe)
         {
             if (!r.placed) allDone = false;
         }
@@ -110,15 +113,26 @@ public class CraftArea : MonoBehaviour
 
     void RecipeOutput()
     {
+        
         foreach (Item i in currentRecipeItems)
         {
             i.transform.DOKill();
-            i.ResetItem();
-            if (i.GetComponent<Collider>()) i.GetComponent<Collider>().enabled = true;
+            if (resetComponents)
+            {
+                i.ResetItem();
+                if (i.GetComponent<Collider>()) i.GetComponent<Collider>().enabled = true;
+            }
+            else
+            {
+                i.gameObject.SetActive(false);
+            }
         }
-        StartCoroutine(RetryDelay());
-        
+
+
         Instantiate(itemToSpawn, spawnLocation.position, spawnLocation.rotation);
+
+        StartCoroutine(RetryDelay());
+       
         if (craftingEffect) Instantiate(craftingEffect, spawnLocation.position, spawnLocation.rotation);
         
     }

@@ -17,20 +17,41 @@ public class Glow : MonoBehaviour
     public bool isGlowing = false;
 
     [Space] [SerializeField] GameObject _target;
-    Renderer render;
-    Material mat;
+    public List<Material> mats;
     Tweener tw = null;
     bool shineUp = false;
+    bool hasStarted = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (observer == null) observer = Camera.main.transform;
         if (_target == null) _target = this.gameObject;
-        render = _target.GetComponent<Renderer>();
-        mat = render.material;
+        //render = _target.GetComponent<Renderer>();
+        //mat = render.material;
+        Transform[] objects = _target.GetComponentsInChildren<Transform>();
+        foreach (Transform t in objects)
+        {
+            if(t.GetComponent<Renderer>())
+            {
+                Renderer r = t.GetComponent<Renderer>();
+                mats.Add(t.GetComponent<Renderer>().material);
+                r.material.EnableKeyword("_EMISSION");
+            }
+        }
 
-        mat.EnableKeyword("_EMISSION");
+        //mat.EnableKeyword("_EMISSION");
+        hasStarted = true;
     }
+
+    public void ResetGlowing()
+    {
+        StopAllCoroutines();
+        glow = false;
+        isGlowing = false;
+
+        foreach (Material mat in mats) mat.SetColor("_EmissionColor", glowColor_ * 0);
+    }    
 
     float MaxIntensity()
     {
@@ -45,7 +66,7 @@ public class Glow : MonoBehaviour
 
     IEnumerator DoGlow()
     {
-        DOTween.Kill(this.mat);
+        foreach (Material mat in mats) DOTween.Kill(mat);
 
         isGlowing = true;
         while(glow)
@@ -68,7 +89,7 @@ public class Glow : MonoBehaviour
                 if (!glow)
                 {
                     breakWhile = true;
-                    DOTween.Kill(this.mat);
+                    foreach (Material mat in mats) DOTween.Kill(mat);
                     break;
                 }
                 yield return new WaitForSeconds((glowTime)/10);
@@ -82,9 +103,13 @@ public class Glow : MonoBehaviour
                 .OnComplete(() =>
                 {
                     shineUp = false;
-                    DOTween.Kill(this.mat);
-                    mat.SetColor("_EmissionColor", glowColor_ * 0);
-                    isGlowing = false;
+                    
+                    foreach (Material mat in mats)
+                    {
+                        mat.SetColor("_EmissionColor", glowColor_ * 0);
+                        DOTween.Kill(mat);
+                    }
+                        isGlowing = false;
                 });
         
         yield break;
@@ -99,12 +124,17 @@ public class Glow : MonoBehaviour
             StartCoroutine(DoGlow());
         }
 
-        if(isGlowing) mat.SetColor("_EmissionColor", glowColor_ * intensity * MaxIntensity());
+        if(isGlowing) foreach (Material mat in mats) mat.SetColor("_EmissionColor", glowColor_ * intensity * MaxIntensity()*0.5f);
     }
 
     private void OnDestroy()
     {
-        Destroy(mat);
+        foreach (Material mat in mats)
+        {
+            mat.DOKill();
+            Destroy(mat);
+        }
+        mats.Clear();
     }
 
 }
