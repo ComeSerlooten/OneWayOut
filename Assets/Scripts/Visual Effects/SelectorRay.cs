@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-
 
 public class SelectorRay : MonoBehaviour
 {
     [SerializeField] Transform cameraAim;
+    [SerializeField] Transform itemLookedText;
     float maxDistance = 100;
 
     public GameObject inView;
@@ -72,6 +73,14 @@ public class SelectorRay : MonoBehaviour
                 {
                     if (objInView) if (inView.GetComponent<Glow>()) inView.GetComponent<Glow>().glow = false;
                     inView = foundGlow;
+
+                    if (inView.GetComponent<Item>())
+                    {
+                        itemLookedText.GetComponent<TextMeshProUGUI>().text = inView.GetComponent<Item>().itemName;
+                        itemLookedText.gameObject.SetActive(true);
+                    }
+                    else itemLookedText.gameObject.SetActive(false);
+
                     inView.GetComponent<Glow>().observer = cameraAim;
                     //inView.GetComponent<Glow>().maxViewDistance = maxDistance;
                     inView.GetComponent<Glow>().glow = true;
@@ -80,6 +89,7 @@ public class SelectorRay : MonoBehaviour
             }
             else
             {
+                itemLookedText.gameObject.SetActive(false);
 
                 if(objInView) if (inView.GetComponent<Glow>()) inView.GetComponent<Glow>().glow = false;
                 objInView = false;

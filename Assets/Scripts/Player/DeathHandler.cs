@@ -13,7 +13,7 @@ public class DeathHandler : MonoBehaviour
     {
         items = FindObjectsOfType(typeof(Item)) as Item[];
         //log :
-        foreach(Item item in Item)
+        foreach(Item item in items)
         {
             Debug.Log("This item is in the list : " + item);
         }

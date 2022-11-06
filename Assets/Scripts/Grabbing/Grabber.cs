@@ -24,6 +24,9 @@ public class Grabber : MonoBehaviour
     public int holdingLayerIndex;
     int layerOfItem;
 
+    [SerializeField] LayerMask holdPositionMask;
+    float initialHoldDist;
+
     SelectorRay ray;
 
     // Start is called before the first frame update
@@ -31,13 +34,24 @@ public class Grabber : MonoBehaviour
     {
         //Pickup(grabbedObject);   
         ray = GetComponent<SelectorRay>();
+        initialHoldDist = holdPositionner.localPosition.z;
     }
 
     void AdjustHoldPosition()
     {
+        float holdDist = initialHoldDist;
+        Vector3 toHoldPos = holdPositionner.position - cam.transform.position;
+        RaycastHit[] collidersInFront = Physics.SphereCastAll(cam.transform.position, .25f, toHoldPos.normalized, holdDist, holdPositionMask);
+        
+        if(collidersInFront.Length > 1)
+        {
+            Debug.Log(collidersInFront[1].transform.name);
+            holdDist = collidersInFront[1].distance * .9f;
+        }
+        Debug.DrawRay(cam.transform.position, holdDist * toHoldPos.normalized, Color.red, .1f);
 
         float holdPos = (cam.localRotation.eulerAngles.x > 90) ? holdHeight : holdHeight * (1 - cam.localRotation.eulerAngles.x / 90);
-        holdPositionner.localPosition = new Vector3(holdPositionner.localPosition.x, holdPos, holdPositionner.localPosition.z);
+        holdPositionner.localPosition = new Vector3(holdPositionner.localPosition.x, holdPos, holdDist);
         
     }
 
@@ -54,6 +68,8 @@ public class Grabber : MonoBehaviour
         StopCoroutine(KeepInPlace());
 
         DOTween.Kill(grabbedObject);
+
+
 
         grabbedObject.rb.useGravity = originalGravityState;
         grabbedObject.rb.AddForce((cam.forward * 3 + Vector3.up*.5f) * (throwForce+0.5f), ForceMode.Impulse);
