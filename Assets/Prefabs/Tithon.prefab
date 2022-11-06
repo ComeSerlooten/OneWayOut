@@ -585,7 +585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraAim: {fileID: 2264247194635410756}
-  itemLookedText: {fileID: 0}
+  itemLookedText: {fileID: 121141991139173655}
   inView: {fileID: 0}
   objInView: 0
   doRay: 1
