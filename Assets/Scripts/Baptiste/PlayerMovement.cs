@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+    public Animator animator;
 
     // Update is called once per frame
     void Update()
@@ -34,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(move * speed * Time.deltaTime);
+
+        animator.SetBool("IsWalking", move.magnitude > 0.3);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
