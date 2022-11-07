@@ -40,7 +40,7 @@ public class Grabber : MonoBehaviour
     void AdjustHoldPosition()
     {
         float holdDist = initialHoldDist;
-        Vector3 toHoldPos = holdPositionner.position - cam.transform.position;
+        /*Vector3 toHoldPos = holdPositionner.position - cam.transform.position;
         RaycastHit[] collidersInFront = Physics.SphereCastAll(cam.transform.position, .25f, toHoldPos.normalized, holdDist, holdPositionMask);
         
         if(collidersInFront.Length > 1)
@@ -48,7 +48,7 @@ public class Grabber : MonoBehaviour
             Debug.Log(collidersInFront[1].transform.name);
             holdDist = collidersInFront[1].distance * .9f;
         }
-        Debug.DrawRay(cam.transform.position, holdDist * toHoldPos.normalized, Color.red, .1f);
+        Debug.DrawRay(cam.transform.position, holdDist * toHoldPos.normalized, Color.red, .1f);*/
 
         float holdPos = (cam.localRotation.eulerAngles.x > 90) ? holdHeight : holdHeight * (1 - cam.localRotation.eulerAngles.x / 90);
         holdPositionner.localPosition = new Vector3(holdPositionner.localPosition.x, holdPos, holdDist);
@@ -62,7 +62,7 @@ public class Grabber : MonoBehaviour
 
         foreach(Transform t in grabbedObject.GetComponentsInChildren<Transform>())
         {
-            t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(layerOfItem));
+            //t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(layerOfItem));
         }
 
         StopCoroutine(KeepInPlace());
@@ -88,11 +88,11 @@ public class Grabber : MonoBehaviour
         if(grab.isGrabbable && !isGrabbing)
         {
             grabbedObject = grab;
-            layerOfItem = grab.gameObject.layer;
+            //layerOfItem = grab.gameObject.layer;
 
             foreach (Transform t in grabbedObject.GetComponentsInChildren<Transform>())
             {
-                t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(holdingLayerIndex));
+                //t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(holdingLayerIndex));
             }
 
             isGrabbing = true;
