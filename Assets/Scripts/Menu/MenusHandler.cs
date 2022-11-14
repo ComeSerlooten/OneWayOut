@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MenusHandler : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class MenusHandler : MonoBehaviour
     [SerializeField] GameObject carnet;
     [SerializeField] GameObject setting;
     [SerializeField] GameObject menu;
+    [SerializeField] GameObject deathPannel;
 
     private void Update()
     {
@@ -68,6 +70,27 @@ public class MenusHandler : MonoBehaviour
         {
             Debug.Log("CloseMenu()");
             menu.SetActive(false);
+            ReleasePause();
+        }
+    }
+
+    public void OpenDeathPannel(int indexOfEnd)
+    {
+        if (!deathPannel.activeSelf)
+        {
+            Debug.Log("DeathPannel");
+            deathPannel.GetComponentInChildren<TMP_Text>().text = "Vous avez atteint la fin n°" + indexOfEnd + "\nBonne chance pour trouver les suivantes !";
+            deathPannel.SetActive(true);
+            SetPause();
+        }
+    }
+
+    public void CloseDeathPannel()
+    {
+        if (deathPannel.activeSelf)
+        {
+            Debug.Log("CloseDeathPannel()");
+            deathPannel.SetActive(false);
             ReleasePause();
         }
     }

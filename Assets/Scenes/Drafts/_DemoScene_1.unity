@@ -704,6 +704,11 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &79570509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2264247195726347513, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+  m_PrefabInstance: {fileID: 1105602436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &98447773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1240,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1603745855}
+      - m_Target: {fileID: 1603745856}
         m_TargetAssemblyTypeName: MenusHandler, Assembly-CSharp
         m_MethodName: CloseMenu
         m_Mode: 1
@@ -4286,6 +4291,7 @@ GameObject:
   - component: {fileID: 487158665}
   - component: {fileID: 487158664}
   - component: {fileID: 487158663}
+  - component: {fileID: 487158666}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -4343,6 +4349,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &487158666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 487158662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db6c963c5883a640b9b371752db70af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menusHandler: {fileID: 1603745856}
+  spawnPoint: {fileID: 821151323}
+  player: {fileID: 79570509}
 --- !u!1 &491494128
 GameObject:
   m_ObjectHideFlags: 0
@@ -6508,6 +6529,37 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 820517651}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &821151323
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 821151324}
+  m_Layer: 0
+  m_Name: spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &821151324
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 821151323}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826792069
 GameObject:
   m_ObjectHideFlags: 0
@@ -6705,7 +6757,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5446167209646154803, guid: f59007cd837c5f04c8b9391438068078, type: 3}
   m_PrefabInstance: {fileID: 1105602436}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 79570509}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f29875a4d29cc42499c0355498853ac8, type: 3}
@@ -7596,10 +7648,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1338289228}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1603745856}
+        m_TargetAssemblyTypeName: MenusHandler, Assembly-CSharp
+        m_MethodName: CloseDeathPannel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9480,8 +9532,8 @@ MonoBehaviour:
   m_HandleRect: {fileID: 998367180}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
-  m_WholeNumbers: 0
+  m_MaxValue: 1500
+  m_WholeNumbers: 1
   m_Value: 0.508
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10211,6 +10263,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Grabber, Assembly-CSharp
         m_MethodName: Drop
         m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 487158666}
+        m_TargetAssemblyTypeName: DeathHandler, Assembly-CSharp
+        m_MethodName: PlayerDies
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11586,6 +11650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1603745854}
   - component: {fileID: 1603745855}
+  - component: {fileID: 1603745856}
   m_Layer: 5
   m_Name: menuHandler
   m_TagString: Untagged
@@ -11625,11 +11690,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e5fffb256008a409734f67d20eeadc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1603745856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603745853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5561b4f7d77e74f8ad72c17d3a0714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   keyForCarnet: 9
   keyForMenuPause: 27
   carnet: {fileID: 530053401}
   setting: {fileID: 1670013987}
   menu: {fileID: 1856110831}
+  deathPannel: {fileID: 1338289228}
 --- !u!1 &1624496494
 GameObject:
   m_ObjectHideFlags: 0

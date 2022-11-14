@@ -7,20 +7,29 @@ public class Item : MonoBehaviour
     public string itemName;
     Vector3 initPosition;
     Quaternion initRotation;
+    private bool initActive;
 
     private void Awake()
     {
         initPosition = transform.position;
         initRotation = transform.rotation;
+        initActive = gameObject.activeSelf;
     }
 
     public void ResetItem()
     {
+        Debug.Log(itemName);
+        gameObject.SetActive(initActive);
         if(GetComponent<Rigidbody>())
         {
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+        }
+        if (GetComponent<BoxCollider>())
+        {
+            BoxCollider bc = GetComponent<BoxCollider>();
+            bc.enabled = true;
         }
         transform.position = initPosition;
         transform.rotation = initRotation;
