@@ -75,12 +75,12 @@ public class MenusHandler : MonoBehaviour
     private void SetPause()
     {
         Time.timeScale = 0;
-        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     private void ReleasePause()
     {
         Time.timeScale = 1;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
