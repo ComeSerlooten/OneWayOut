@@ -7,11 +7,13 @@ public class Item : MonoBehaviour
     public string itemName;
     Vector3 initPosition;
     Quaternion initRotation;
+    bool initActive;
 
     private void Awake()
     {
         initPosition = transform.position;
         initRotation = transform.rotation;
+        initActive = gameObject.activeSelf;
     }
 
     public void ResetItem()
@@ -22,8 +24,15 @@ public class Item : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
+        if (GetComponent<BoxCollider>())
+        {
+            BoxCollider bc = GetComponent<BoxCollider>();
+            bc.enabled = true;
+        }
+        
         transform.position = initPosition;
         transform.rotation = initRotation;
+        gameObject.SetActive(initActive);
     }
 
     public bool OnUse(Item subject)
