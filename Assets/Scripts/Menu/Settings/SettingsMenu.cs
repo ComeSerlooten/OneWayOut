@@ -16,11 +16,16 @@ public class SettingsMenu : MonoBehaviour
     public TextMeshProUGUI sensiTxt;
     private float sens;
 
+    private MouseLook mouseLook;
+
+    private void Awake()
+    {
+        mouseLook = FindObjectOfType(typeof(MouseLook)) as MouseLook;
+        SetSensitivity(mouseLook.GetMouseSensitivity());
+    }
+
     void Start()
     {
-        sens = 0.5f;
-        sensiTxt.text = sens.ToString("0.00");
-
         resolutions = Screen.resolutions;
 
         resolutionDropDown.ClearOptions();
@@ -61,7 +66,8 @@ public class SettingsMenu : MonoBehaviour
     {
         sens = value;
         Debug.Log("Sensitivity is set to : " + sens);
-        sensiTxt.text = sens.ToString("0.00");
+        sensiTxt.text = sens.ToString();
+        mouseLook.SetMouseSensitivity(sens);
     }
 
     public void SetResolution(int index)
