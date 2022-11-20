@@ -21,12 +21,16 @@ public class SettingsMenu : MonoBehaviour
     private void Awake()
     {
         mouseLook = FindObjectOfType(typeof(MouseLook)) as MouseLook;
-        SetSensitivity(mouseLook.GetMouseSensitivity());
+        SetSensitivity((int)mouseLook.GetMouseSensitivity());
+
     }
 
-    void Start()
+    public void init()
     {
+        mouseLook = FindObjectOfType(typeof(MouseLook)) as MouseLook;
+
         resolutions = Screen.resolutions;
+        Debug.Log(resolutions + "Res");
 
         resolutionDropDown.ClearOptions();
 
@@ -34,11 +38,11 @@ public class SettingsMenu : MonoBehaviour
 
         int curentResolutionIndex = 0;
         int index = 0;
-        foreach(Resolution mRes in resolutions)
+        foreach (Resolution mRes in resolutions)
         {
             resolutionsString.Add(mRes.width + " x " + mRes.height);
 
-            if (mRes.width == Screen.currentResolution.width && 
+            if (mRes.width == Screen.currentResolution.width &&
                 mRes.height == Screen.currentResolution.height)
                 curentResolutionIndex = index;
 
@@ -72,7 +76,13 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetResolution(int index)
     {
+        Debug.Log("Number of items in Resolutions : ");
         Resolution res = resolutions[index];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+    }
+
+    public void SetGraphics(int index)
+    {
+        Debug.Log("Changement graphique : " + index);
     }
 }
