@@ -32,12 +32,12 @@ public class MouseLook : MonoBehaviour
 
     }
 
-    public void SetMouseSensitivity(float val)
+    public void setSensitivity(float val)
     {
         mouseSensitivity = val;
     }
 
-    public float GetMouseSensitivity()
+    public float getSens()
     {
         return mouseSensitivity;
     }

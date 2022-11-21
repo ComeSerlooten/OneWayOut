@@ -15,22 +15,20 @@ public class SettingsMenu : MonoBehaviour
 
     public TextMeshProUGUI sensiTxt;
     private float sens;
-
-    private MouseLook mouseLook;
+    MouseLook mouseLook;
 
     private void Awake()
     {
         mouseLook = FindObjectOfType(typeof(MouseLook)) as MouseLook;
-        SetSensitivity((int)mouseLook.GetMouseSensitivity());
-
+        sens = mouseLook.getSens();
     }
 
-    public void init()
+    void Start()
     {
-        mouseLook = FindObjectOfType(typeof(MouseLook)) as MouseLook;
+        sens = 0.5f;
+        sensiTxt.text = sens.ToString("0.00");
 
         resolutions = Screen.resolutions;
-        Debug.Log(resolutions + "Res");
 
         resolutionDropDown.ClearOptions();
 
@@ -38,11 +36,11 @@ public class SettingsMenu : MonoBehaviour
 
         int curentResolutionIndex = 0;
         int index = 0;
-        foreach (Resolution mRes in resolutions)
+        foreach(Resolution mRes in resolutions)
         {
             resolutionsString.Add(mRes.width + " x " + mRes.height);
 
-            if (mRes.width == Screen.currentResolution.width &&
+            if (mRes.width == Screen.currentResolution.width && 
                 mRes.height == Screen.currentResolution.height)
                 curentResolutionIndex = index;
 
@@ -71,18 +69,12 @@ public class SettingsMenu : MonoBehaviour
         sens = value;
         Debug.Log("Sensitivity is set to : " + sens);
         sensiTxt.text = sens.ToString();
-        mouseLook.SetMouseSensitivity(sens);
+        mouseLook.setSensitivity(sens);
     }
 
     public void SetResolution(int index)
     {
-        Debug.Log("Number of items in Resolutions : ");
         Resolution res = resolutions[index];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
-    }
-
-    public void SetGraphics(int index)
-    {
-        Debug.Log("Changement graphique : " + index);
     }
 }

@@ -7,8 +7,7 @@ public class Item : MonoBehaviour
     public string itemName;
     Vector3 initPosition;
     Quaternion initRotation;
-    private bool initActive;
-    public bool reset = true;
+    bool initActive;
 
     private void Awake()
     {
@@ -24,22 +23,16 @@ public class Item : MonoBehaviour
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
-            Debug.Log(itemName + " reset rigid body");
         }
         if (GetComponent<BoxCollider>())
         {
             BoxCollider bc = GetComponent<BoxCollider>();
             bc.enabled = true;
-            Debug.Log(itemName + " reset boxCollider");
         }
+        
+        transform.position = initPosition;
+        transform.rotation = initRotation;
         gameObject.SetActive(initActive);
-        gameObject.transform.position = initPosition;
-        gameObject.transform.rotation = initRotation;
-    }
-
-    public void DeleteItem()
-    {
-        Destroy(gameObject);
     }
 
     public bool OnUse(Item subject)
@@ -66,10 +59,5 @@ public class Item : MonoBehaviour
         {
             return false;
         }
-    }
-
-    public bool IsResetable()
-    {
-        return reset;
     }
 }
