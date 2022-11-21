@@ -17,6 +17,11 @@ public class InteractableObject : Item
         StartCoroutine(CheckConditions());
     }
 
+    public void SetActivatable(bool state)
+    {
+        activatable = state;
+    }
+
     public virtual bool ActivationCondition()
     {
         return true;

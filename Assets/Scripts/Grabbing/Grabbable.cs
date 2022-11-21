@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class Grabbable : MonoBehaviour
 {
-    public bool isGrabbable;
+    public bool isGrabbable = true;
     public bool isGrabbed;
     public bool canInspect;
 
