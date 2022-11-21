@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Timelines/TestSequence.playable.meta
+guid: 790c34232fe8c4440a8dfa3530b5c14e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+========
+guid: 31fa67189bc0a9c4cbf7372977c05e1c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+>>>>>>>> Baptiste:Assets/Baptiste/HouseLPSample/Materials/Laptop Screen.mat.meta
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
