@@ -1,15 +1,8 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/External/Baptiste/SimpleNaturePack/Scenes/PostProcessing/Scene Settings Profile_SimpleNaturePack.asset.meta
-guid: 87f2376dd5cfd1248920d60e7c76563d
-NativeFormatImporter:
-  externalObjects: {}
-  mainObjectFileID: 11400000
-========
 guid: e4eeee033e9c8144387c6fb201547578
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
->>>>>>>> Baptiste:Assets/Baptiste/HouseLPSample/Materials/Cereal Box.mat.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
