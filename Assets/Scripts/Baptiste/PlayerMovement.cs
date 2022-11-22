@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(move * speed * Time.deltaTime);
 
-        animator.SetBool("IsWalking", move.magnitude > 0.3);
+        animator.SetBool("IsWalking", move.magnitude > 0.2);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {

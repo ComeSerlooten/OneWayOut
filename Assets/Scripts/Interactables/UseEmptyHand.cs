@@ -8,10 +8,16 @@ public class UseEmptyHand : MonoBehaviour
     public bool canBeUsed = true;
     public UnityEvent onUse;
 
+
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    public void SetUsable(bool state)
+    {
+        canBeUsed = state;
     }
 
     public void Use()
