@@ -20,7 +20,7 @@ public class SettingsMenu : MonoBehaviour
     private void Awake()
     {
         mouseLook = FindObjectOfType(typeof(MouseLook)) as MouseLook;
-        sens = mouseLook.getSens();
+        sens = mouseLook.GetMouseSensitivity();
     }
 
     void Start()
@@ -52,6 +52,11 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropDown.RefreshShownValue();
     }
 
+    public void init()
+    {
+        
+    }
+
     public void SetVolume(float volume)
     {
         Debug.Log("Volume is set to : " + Mathf.Log10(volume) * 20 + "db");
@@ -69,12 +74,17 @@ public class SettingsMenu : MonoBehaviour
         sens = value;
         Debug.Log("Sensitivity is set to : " + sens);
         sensiTxt.text = sens.ToString();
-        mouseLook.setSensitivity(sens);
+        mouseLook.SetMouseSensitivity(sens);
     }
 
     public void SetResolution(int index)
     {
         Resolution res = resolutions[index];
         Screen.SetResolution(res.width, res.height, Screen.fullScreen);
+    }
+
+    public void SetGraphics(int index)
+    {
+
     }
 }
