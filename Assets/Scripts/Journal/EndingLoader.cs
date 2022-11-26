@@ -18,4 +18,9 @@ public class EndingLoader : MonoBehaviour
             log.loadEnding(mEnding); 
         }
     }
+
+    public void validateEnding(int index)
+    {
+        endings[index].Complete();
+    }
 }
