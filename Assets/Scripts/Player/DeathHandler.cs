@@ -26,22 +26,22 @@ public class DeathHandler : MonoBehaviour
     {
         Debug.Log("Player died from end " + indexOfEnding);
         
-       //On fait apparaitre un texte de mort
-       deathPannel.SetActive(true);
-
+        //On fait apparaitre un texte de mort
+        deathPannel.SetActive(true);
+        
         endingLoader.validateEnding(indexOfEnding);
 
-       //On fait rebouger tous les objets à leurs points de spawn 
-       //Implique qu'on à une liste de tous les objets déplacable qqpart
-       //Implique que les objets déplacable ait en mémoire leur position de départ
-       //On laisse les passages ouvert ouvertF
-       //on change rien de la map, que reset les grabbables
+        //On fait rebouger tous les objets à leurs points de spawn 
+        //Implique qu'on à une liste de tous les objets déplacable qqpart
+        //Implique que les objets déplacable ait en mémoire leur position de départ
+        //On laisse les passages ouvert ouvertF
+        //on change rien de la map, que reset les grabbables
         ResetPositionOfAllObject();
-       //on dit que la fin à été atteint
-       //on fait en sorte que tous les objets mono utilisation lié a cette fin soit désactivé
-       //je crois que c'est dejà fait par COME
-       //on fait respawn le joueur dans la première salle
-       ResetPlayerPosition();
+        //on dit que la fin à été atteint
+        //on fait en sorte que tous les objets mono utilisation lié a cette fin soit désactivé
+        //je crois que c'est dejà fait par COME
+        //on fait respawn le joueur dans la première salle
+        ResetPlayerPosition();
     }
 
 
