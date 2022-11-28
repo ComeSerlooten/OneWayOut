@@ -137,7 +137,7 @@ public class Grabber : MonoBehaviour
                 if (ray.inView.GetComponent<Grabbable>())
                 {
                     grabItemPrompt.gameObject.SetActive(true);
-                    if (Input.GetMouseButtonDown(0))
+                    if (Input.GetMouseButtonDown(0) && ray.inView.GetComponent<Grabbable>().isGrabbable)
                     {
                         grabItemPrompt.gameObject.SetActive(false);
                         Vector3 toRaySelected = (ray.inView.transform.position - cam.transform.position);
