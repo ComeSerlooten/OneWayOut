@@ -35,10 +35,16 @@ public class Glow : MonoBehaviour
             if(t.GetComponent<Renderer>())
             {
                 Renderer r = t.GetComponent<Renderer>();
-                mats.Add(t.GetComponent<Renderer>().material);
-                r.material.EnableKeyword("_EMISSION");
+                Material[] allMats = t.GetComponent<Renderer>().materials;
+                foreach (Material m in allMats)
+                {
+                    mats.Add(m);
+                    m.EnableKeyword("_EMISSION");
+                }
+                //Debug.Log("   " + gameObject.name + " " + r.name + " " + "addedMat");
             }
         }
+        //Debug.Log(gameObject.name + " " + mats.Count.ToString());
 
         //mat.EnableKeyword("_EMISSION");
         hasStarted = true;
