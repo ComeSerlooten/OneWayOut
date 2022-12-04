@@ -1948,6 +1948,7 @@ GameObject:
   - component: {fileID: 680885214}
   - component: {fileID: 680885213}
   - component: {fileID: 680885212}
+  - component: {fileID: -3059902789787945485}
   m_Layer: 0
   m_Name: Chemical mixer
   m_TagString: Untagged
@@ -2016,6 +2017,7 @@ MonoBehaviour:
     placed: 0
   - item: {fileID: 7743657141159751439, guid: ab8ab6d06c5aed94d919d5f86113cb73, type: 3}
     placed: 0
+  itemsInArea: []
   craftingCenter: {fileID: 672836345}
   resetComponents: 1
   resetPosition: {fileID: 1806482161}
@@ -2060,6 +2062,7 @@ MonoBehaviour:
     placed: 0
   - item: {fileID: 7743657141159751439, guid: ab8ab6d06c5aed94d919d5f86113cb73, type: 3}
     placed: 0
+  itemsInArea: []
   craftingCenter: {fileID: 672836345}
   resetComponents: 1
   resetPosition: {fileID: 1806482161}
@@ -2106,6 +2109,7 @@ MonoBehaviour:
     placed: 0
   - item: {fileID: 2144012818377375181, guid: 90fc1acd81013cb41b390a6684b79fd1, type: 3}
     placed: 0
+  itemsInArea: []
   craftingCenter: {fileID: 672836345}
   resetComponents: 1
   resetPosition: {fileID: 1806482161}
@@ -2152,6 +2156,7 @@ MonoBehaviour:
     placed: 0
   - item: {fileID: 3474145376812235568, guid: 4285ac03afda3b64faa7ade3e2f2715c, type: 3}
     placed: 0
+  itemsInArea: []
   craftingCenter: {fileID: 672836345}
   resetComponents: 1
   resetPosition: {fileID: 1806482161}
@@ -2175,6 +2180,19 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   runCheck: 1
+--- !u!114 &-3059902789787945485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2744620169266543247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a20512329db20094baf6ef3d3fe14122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Chem Mixer
 --- !u!1 &2744620169272980443
 GameObject:
   m_ObjectHideFlags: 0
