@@ -14,6 +14,7 @@ public class ArcadeGun : MonoBehaviour
     [Space]
     [SerializeField] float maxDistance = 20;
     public Vector3 pointFound;
+    public bool slowMo = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,6 +67,8 @@ public class ArcadeGun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (slowMo) Time.timeScale = .25f;
+        else Time.timeScale = 1;
 
         if (grab.isGrabbed)
         {

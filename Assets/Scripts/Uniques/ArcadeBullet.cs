@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ArcadeBullet : MonoBehaviour
 {
-
+    Rigidbody rb;
     public float lifeSpan = 1f;
     public float currentLifeTime = 0;
     [Space]
@@ -12,25 +13,41 @@ public class ArcadeBullet : MonoBehaviour
     [Space]
     public int bounceAmount = 5;
     public int currentBounces = 0;
-
+    [Space]
+    public bool mirrorBounce = false;
+    public UnityEvent onPlayerShot;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Collided");
+        //Debug.Log("Collided");
         if(collision.gameObject.GetComponent<Rigidbody>())
         {
-            collision.gameObject.GetComponent<Rigidbody>().AddExplosionForce(50, collision.contacts[0].point, 1f);
+            collision.gameObject.GetComponent<Rigidbody>().AddForceAtPosition(transform.forward * 10f, collision.contacts[0].point, ForceMode.Impulse);//AddExplosionForce(50, collision.contacts[0].point, 1f);
         }
+
+        if(collision.gameObject.GetComponent<CharacterController>() && mirrorBounce)
+        {
+            Debug.Log("ShotPlayer");
+            onPlayerShot.Invoke();
+        }
+
         //If getComponent Explodable -> Explode and die
+
+        mirrorBounce = collision.gameObject.GetComponent<MirrorView>();
 
         currentBounces++;
         if (currentBounces > bounceAmount) Destroy(this.gameObject);
-        transform.forward = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
+        Vector3 reflected = Vector3.Reflect(transform.forward, collision.contacts[0].normal);
+        transform.LookAt(transform.position + reflected);
+        transform.position += transform.forward * .5f;
+
+        rb.angularVelocity = Vector3.zero;
+        rb.velocity = Vector3.zero;
     }
 
     private void Move()

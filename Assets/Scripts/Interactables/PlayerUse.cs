@@ -58,7 +58,7 @@ public class PlayerUse : MonoBehaviour
             //if(grab.grabbedObject && selector.inView) if (selector.inView.GetComponent<InteractableObject>() == grab.grabbedObject.GetComponent<InteractableObject>()) attemptableUse = false;
             useItemPrompt.gameObject.SetActive(attemptableUse);
 
-            if(attemptableUse)
+            if(attemptableUse && !grab.grabbedObject.GetComponent<ArcadeGun>())
             {
                 if(Input.GetKeyDown(keyToUse))
                 {
