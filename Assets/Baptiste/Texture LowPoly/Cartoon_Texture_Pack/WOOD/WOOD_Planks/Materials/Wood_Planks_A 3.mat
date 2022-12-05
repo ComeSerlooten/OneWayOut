@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UnderRoof_RoundTile_Bump_B
+  m_Name: Wood_Planks_A 3
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ValidKeywords:
   - _METALLICGLOSSMAP
@@ -24,7 +24,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 8c136788f93e28d44bf55b7ee4c2de76, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2ab9221e9e79b1a4cb6264385c3bacab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -41,22 +41,22 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1.5}
+        m_Scale: {x: 6, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d549ea6da48224b4898b5a5f3d7ea7dd, type: 3}
-        m_Scale: {x: 1, y: 1.5}
+        m_Texture: {fileID: 2800000, guid: afcb53d90181c6a4282a55c176236533, type: 3}
+        m_Scale: {x: 6, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: a42309a2b7fe8924a92dcd44e189715d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 41e7795940143ee48976911c58ba5476, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 8d0ee6a0b5dd83143b796d8a913b9113, type: 3}
+        m_Texture: {fileID: 2800000, guid: c624015efb5eb544caf58af7079bf884, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
-        m_Texture: {fileID: 2800000, guid: f8b6cc3943a156241b267e6d223aa3d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 90e365f3a60aa554bbaff50bb8567dde, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
@@ -71,7 +71,7 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _Parallax: 0.02
+    - _Parallax: 0.0286
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
