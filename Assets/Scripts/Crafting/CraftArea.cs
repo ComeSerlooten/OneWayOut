@@ -13,21 +13,23 @@ public class CraftArea : MonoBehaviour
     [SerializeField] float checkRadius = 2;
 
     [SerializeField] List<RecipeItem> recipe;
-    public List<Item> itemsInArea;
-    public List<Item> currentRecipeItems;
+    public List<Item> itemsInArea = new List<Item>();
+    List<Item> currentRecipeItems = new List<Item>();
     [SerializeField] Transform craftingCenter;
     public bool resetComponents = false;
-    [Space(20)]
+    [SerializeField] Transform resetPosition;
+    [Space(10)]
     [Header("Output of the Recipe")]
     [SerializeField] GameObject itemToSpawn;
     [SerializeField] Transform spawnLocation;
     [SerializeField] ParticleSystem craftingEffect;
-    [Space]
+    public GameObject craftedItem;
+    public UnityEvent onCraft;
     public bool runCheck = true;
-    public bool checkRunning = false;
-    public bool initialRunState;
+    bool checkRunning = false;
+    bool initialRunState;
 
-    IEnumerator CheckForItems()
+    protected IEnumerator CheckForItems()
     {
         checkRunning = true;
         while(runCheck)
@@ -44,7 +46,7 @@ public class CraftArea : MonoBehaviour
         checkRunning = false;
     }
 
-    void UpdateCompletion()
+    protected void UpdateCompletion()
     {
         currentRecipeItems.Clear();
         foreach(RecipeItem r in recipe)
@@ -52,7 +54,7 @@ public class CraftArea : MonoBehaviour
             r.placed = false;
             foreach(Item i in itemsInArea)
             {
-                if (i == r.item)
+                if (i.itemName == r.item.itemName)
                 {
                     r.placed = true;
                     currentRecipeItems.Add(i);
@@ -64,7 +66,7 @@ public class CraftArea : MonoBehaviour
         if (AllItemsPlaced() && !(singleUse && crafted) && canCraft) StartCoroutine(RecipeStartDelay());
     }
 
-     bool AllItemsPlaced()
+    protected bool AllItemsPlaced()
     {
         bool allDone = true;
         if (recipe.Count == 0) allDone = false;
@@ -86,7 +88,7 @@ public class CraftArea : MonoBehaviour
         yield break;
     }
 
-    IEnumerator AssembleIngredients()
+    protected IEnumerator AssembleIngredients()
     {
         foreach(Item i in currentRecipeItems)
         {
@@ -111,7 +113,7 @@ public class CraftArea : MonoBehaviour
         yield break;
     }
 
-    void RecipeOutput()
+    public virtual void RecipeOutput()
     {
         
         foreach (Item i in currentRecipeItems)
@@ -121,6 +123,7 @@ public class CraftArea : MonoBehaviour
             {
                 i.ResetItem();
                 if (i.GetComponent<Collider>()) i.GetComponent<Collider>().enabled = true;
+                if (resetPosition) i.transform.position = resetPosition.position;
             }
             else
             {
@@ -129,7 +132,8 @@ public class CraftArea : MonoBehaviour
         }
 
 
-        Instantiate(itemToSpawn, spawnLocation.position, spawnLocation.rotation);
+        craftedItem = Instantiate(itemToSpawn, spawnLocation.position, spawnLocation.rotation);
+        onCraft.Invoke();
 
         StartCoroutine(RetryDelay());
        
@@ -137,7 +141,7 @@ public class CraftArea : MonoBehaviour
         
     }
 
-    IEnumerator RetryDelay()
+    protected IEnumerator RetryDelay()
     {
         currentRecipeItems.Clear();
         itemsInArea.Clear();
@@ -152,7 +156,7 @@ public class CraftArea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (runCheck && !checkRunning) StartCoroutine(CheckForItems());
+        if (runCheck && !checkRunning) StartCoroutine(this.CheckForItems());
     }
 }
 

@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: -8713061697014474350}
   - component: {fileID: -8199788194544709518}
   - component: {fileID: 1753165859401526568}
+  - component: {fileID: 5337631172384112164}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -243,3 +244,16 @@ MonoBehaviour:
   isGlowing: 0
   _target: {fileID: 0}
   mats: []
+--- !u!65 &5337631172384112164
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7857572378521381292}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.016465029, y: 0.026368605, z: 0.009036666}
+  m_Center: {x: 0, y: 0, z: 0}

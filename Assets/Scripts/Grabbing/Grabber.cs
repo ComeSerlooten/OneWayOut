@@ -62,7 +62,7 @@ public class Grabber : MonoBehaviour
 
         foreach(Transform t in grabbedObject.GetComponentsInChildren<Transform>())
         {
-            //t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(layerOfItem));
+            t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(layerOfItem));
         }
 
         StopCoroutine(KeepInPlace());
@@ -88,13 +88,14 @@ public class Grabber : MonoBehaviour
         if(grab.isGrabbable && !isGrabbing)
         {
             grabbedObject = grab;
-            //layerOfItem = grab.gameObject.layer;
+            layerOfItem = grab.gameObject.layer;
 
             foreach (Transform t in grabbedObject.GetComponentsInChildren<Transform>())
             {
-                //t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(holdingLayerIndex));
+                t.gameObject.layer = LayerMask.NameToLayer(LayerMask.LayerToName(holdingLayerIndex));
             }
 
+            grab.isGrabbed = true;
             isGrabbing = true;
             originalGravityState = grab.rb.useGravity;
             grab.rb.useGravity = false;

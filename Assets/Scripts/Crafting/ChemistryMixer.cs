@@ -27,6 +27,11 @@ public class ChemistryMixer : MonoBehaviour
         BringOutCraft(debugCrafted);
     }
 
+    public void InitiateCraftSequence(CraftArea crafter)
+    {
+        BringOutCraft(crafter.craftedItem.transform);
+    }
+
     public void BringOutCraft(Transform crafted)
     {
         craftedObject = crafted;
