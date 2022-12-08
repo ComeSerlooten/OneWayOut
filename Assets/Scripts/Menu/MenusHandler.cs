@@ -76,6 +76,7 @@ public class MenusHandler : MonoBehaviour
 
     public void OpenDeathPannel(int indexOfEnd)
     {
+        Debug.Log("OpenDeathPannel(" + indexOfEnd + ")");
         if (!deathPannel.activeSelf)
         {
             Debug.Log("DeathPannel");

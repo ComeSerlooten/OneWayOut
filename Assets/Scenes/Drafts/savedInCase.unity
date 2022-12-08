@@ -640,15 +640,17 @@ MonoBehaviour:
   - item: {fileID: 260511152}
     placed: 0
   itemsInArea: []
-  currentRecipeItems: []
   craftingCenter: {fileID: 1674724882}
   resetComponents: 0
+  resetPosition: {fileID: 0}
   itemToSpawn: {fileID: 2058448599230228878, guid: 8e0968081a92368408451975f7075e39, type: 3}
   spawnLocation: {fileID: 1023975202}
   craftingEffect: {fileID: 0}
+  craftedItem: {fileID: 0}
+  onCraft:
+    m_PersistentCalls:
+      m_Calls: []
   runCheck: 1
-  checkRunning: 0
-  initialRunState: 0
 --- !u!1 &70384902
 GameObject:
   m_ObjectHideFlags: 0
@@ -5023,7 +5025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db6c963c5883a640b9b371752db70af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathPannel: {fileID: 0}
+  menusHandler: {fileID: 1603745856}
   spawnPoint: {fileID: 821151323}
   player: {fileID: 79570509}
   endingLoader: {fileID: 523645549}
