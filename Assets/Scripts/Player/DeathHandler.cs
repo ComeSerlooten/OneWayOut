@@ -51,8 +51,10 @@ public class DeathHandler : MonoBehaviour
         Debug.Log("reseting position of all items");
         foreach (Item item in items)
         {
-            Debug.Log("Reset item : " + item.itemName);
-            item.ResetItem();
+            if(item != null) { 
+                Debug.Log("Reset item : " + item.itemName);
+                item.ResetItem();
+            }
         }
     }
 
