@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class Ending
@@ -15,9 +17,12 @@ public class Ending
     [SerializeField]
     private string help;
 
+    [SerializeField]
     private bool completed = false;
 
     public EndingScript myEndingScript { get; set; }
+
+    public UnityEvent TriggerSequence;
 
     public string myTitle
     {
@@ -29,6 +34,12 @@ public class Ending
         {
             titre = value;
         }
+    }
+
+    internal void Complete()
+    {
+        completed = true;
+        TriggerSequence.Invoke();
     }
 
     public string getDescription()
@@ -45,17 +56,4 @@ public class Ending
     {
         return completed;
     }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
 }

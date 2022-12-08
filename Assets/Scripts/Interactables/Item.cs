@@ -35,6 +35,11 @@ public class Item : MonoBehaviour
         gameObject.SetActive(initActive);
     }
 
+    public void SetInitActive(bool state)
+    {
+        initActive = state;
+    }
+
     public bool OnUse(Item subject)
     {
         InteractableObject[] interactions = subject.GetComponents<InteractableObject>();

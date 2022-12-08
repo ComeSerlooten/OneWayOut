@@ -29,6 +29,11 @@ public class Grabbable : MonoBehaviour
         isGrabbed = false;
     }
 
+    public void SetIsGrabbable(bool val)
+    {
+        isGrabbable = val;
+    }
+
     // Update is called once per frame
     void Update()
     {
