@@ -6,7 +6,7 @@ using TMPro;
 
 public class DeathHandler : MonoBehaviour
 {
-    public GameObject deathPannel;
+    public MenusHandler menusHandler;
     public GameObject spawnPoint;
     public GameObject player;
     private Item[] items;
@@ -25,10 +25,11 @@ public class DeathHandler : MonoBehaviour
     public void PlayerDies(int indexOfEnding)
     {
         Debug.Log("Player died from end " + indexOfEnding);
-        
+
         //On fait apparaitre un texte de mort
-        deathPannel.SetActive(true);
-        
+        menusHandler.OpenDeathPannel(indexOfEnding);
+
+
         endingLoader.validateEnding(indexOfEnding);
 
         //On fait rebouger tous les objets à leurs points de spawn 
@@ -44,13 +45,6 @@ public class DeathHandler : MonoBehaviour
         ResetPlayerPosition();
     }
 
-
-    private void WaitForAllow()
-    {
-        Debug.Log("Waiting for player to close window of death");
-        while (deathPannel.activeSelf); //tant que le panneau est actif on attend
-        
-    }
 
     private void ResetPositionOfAllObject()
     {
