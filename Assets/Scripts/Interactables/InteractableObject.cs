@@ -33,7 +33,7 @@ public class InteractableObject : Item
         yield return new WaitForSeconds(0.25f);
     }
 
-    public bool Use(Item user)
+    public virtual bool Use(Item user)
     {
         if((user == target_ || user.itemName == target_.itemName) && activatable && !(triggerOnce && triggered))
         {
