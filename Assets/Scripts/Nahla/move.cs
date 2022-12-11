@@ -9,7 +9,7 @@ public class move : MonoBehaviour
 
     [SerializeField]
 
-    private float speed = 4f;
+    private float speed = 4f, curspeed;
 
 
     private Vector3 deplacement = Vector3.zero;
@@ -33,18 +33,22 @@ public class move : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             deplacement = Vector3.zero;
-            transform.Rotate(Vector3.up * -speed * Time.fixedDeltaTime);
+            transform.Rotate(Vector3.up * -20 * Time.fixedDeltaTime);
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
 
-            deplacement = Vector3.right;
             deplacement = Vector3.zero;
-            transform.Rotate(Vector3.up * speed * Time.fixedDeltaTime);
+            transform.Rotate(Vector3.up * 20 * Time.fixedDeltaTime);
         }
 
-        transform.Translate (deplacement * speed * Time.fixedDeltaTime);
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            curspeed = speed*20;
+        }
+
+            transform.Translate (deplacement * speed * Time.fixedDeltaTime);
         deplacement = Vector3.zero;
     }
 }
