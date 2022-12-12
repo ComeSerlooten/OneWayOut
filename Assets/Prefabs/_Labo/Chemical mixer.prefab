@@ -803,7 +803,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1724534558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.55, z: 0.3639}
+  m_LocalPosition: {x: 0, y: 0.556, z: 0.3639}
   m_LocalScale: {x: 1.2, y: 0.1, z: 0.47230563}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2202,6 +2202,7 @@ MonoBehaviour:
   isGlowing: 0
   _target: {fileID: 0}
   mats: []
+  ignoreGlow: []
 --- !u!114 &2744620170508086314
 MonoBehaviour:
   m_ObjectHideFlags: 0
