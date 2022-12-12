@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class InteractableObject : Item
 {
+    Grabber grabber;
     public Item target_;
     public UnityEvent TriggerSequence;
 
@@ -14,7 +15,9 @@ public class InteractableObject : Item
     // Start is called before the first frame update
     void Start()
     {
+        grabber = FindObjectOfType<Grabber>();
         StartCoroutine(CheckConditions());
+        TriggerSequence.AddListener(grabber.ForceDrop);
     }
 
     public void SetActivatable(bool state)
