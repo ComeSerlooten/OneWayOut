@@ -38,7 +38,7 @@ public class InteractableObject : Item
 
     public virtual bool Use(Item user)
     {
-        if((user == target_ || user.itemName == target_.itemName) && activatable && !(triggerOnce && triggered))
+        if ((user == target_ || user.itemName == target_.itemName) && activatable && !(triggerOnce && triggered))
         {
             TriggerSequence.Invoke();
             ActivationSequence();
