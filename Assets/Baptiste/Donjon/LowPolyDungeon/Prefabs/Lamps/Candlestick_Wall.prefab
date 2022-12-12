@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 113386649}
   - component: {fileID: 113386650}
-  - component: {fileID: 3474235370440126395}
   m_Layer: 10
   m_Name: CandleLight
   m_TagString: Untagged
@@ -95,18 +94,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!122 &3474235370440126395
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113386648}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4288406783
-  m_Size: -0.05
 --- !u!1 &21966546408553906
 GameObject:
   m_ObjectHideFlags: 0
