@@ -3310,6 +3310,7 @@ MonoBehaviour:
   isGlowing: 0
   _target: {fileID: 0}
   mats: []
+  ignoreGlow: []
 --- !u!114 &3238898817470302781
 MonoBehaviour:
   m_ObjectHideFlags: 0

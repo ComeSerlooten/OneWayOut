@@ -7706,131 +7706,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endings:
-  - titre: Une quoi ?
-    description: Vous avez ouvert la porte
-    help: Comment sortir d'ici
-    completed: 0
-    TriggerSequence:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Item, Assembly-CSharp
-          m_MethodName: SetInitActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Item, Assembly-CSharp
-          m_MethodName: SetInitActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-  - titre: Le boutton
-    description: "Vous avez appuy\xE9 sur le button"
-    help: "Apr\xE8s la porte ? "
-    completed: 0
-    TriggerSequence:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Item, Assembly-CSharp
-          m_MethodName: SetInitActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: Item, Assembly-CSharp
-          m_MethodName: SetInitActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 1
-          m_CallState: 2
   - titre: Etre au courant
-    description: Vous avez mis le tounevis dans la prise
-    help: Coup de jus
+    description: "J'ai mis le tournevis dans la prise \xE9lectrique ! BOUM !!"
+    help: Il doit bien y avoir une prise quelque part ?!
     completed: 0
     TriggerSequence:
       m_PersistentCalls:
@@ -7884,21 +7762,21 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
   - titre: Tomber de haut
-    description: "Vous avez saut\xE9 de trop haut"
-    help: Tu n'as pas le vertige ?
+    description: "J'ai r\xE9ussi \xE0 sauter par la fen\xEAtre !"
+    help: "Je dois bien pouvoir trouver une fen\xEAtre cassableble !"
     completed: 0
     TriggerSequence:
       m_PersistentCalls:
         m_Calls: []
   - titre: Trop de pression
-    description: "Vous avez \xE9chou\xE9 au mini jeu des tuyaux"
-    help: Il faut essayer de remettre l'eau !
+    description: "J'ai remis l'eau en route mais \xE0 quelle prix"
+    help: "Je dois remettre l'eau en marche d'une fa\xE7on ou une autre"
     completed: 0
     TriggerSequence:
       m_PersistentCalls:
         m_Calls: []
   - titre: Ayyyyy lmao
-    description: "Un alien vous \xE0 tu\xE9"
+    description: Des oeufs d'Alien ? Serieusment ?
     help: Un visiteur venu d'ailleurs
     completed: 0
     TriggerSequence:
@@ -7912,16 +7790,18 @@ MonoBehaviour:
     TriggerSequence:
       m_PersistentCalls:
         m_Calls: []
-  - titre: Godzilla
+  - titre: Lance flamme
     description: "Je me suis fait manger par un l\xE9zard g\xE9ant"
-    help: "Un l\xE9zard g\xE9ant ?"
+    help: "Peut-\xEAtre que bruler vif reglera tous mes probl\xE8mes, c'est comme
+      \xE7a qu'on tuait les sorci\xE8res non ?"
     completed: 0
     TriggerSequence:
       m_PersistentCalls:
         m_Calls: []
   - titre: Plant'piranha
-    description: Je me suis fait manger par une Plant'piranha
-    help: Comment pourrais-je me faire manger par une plante ?
+    description: Je me suis fait manger par une Plant'piranha, It's me, Mario !
+    help: "Peut-\xEAtre que me faire manger par quelque chose pourrait me faire sortir
+      d'ici"
     completed: 0
     TriggerSequence:
       m_PersistentCalls:
