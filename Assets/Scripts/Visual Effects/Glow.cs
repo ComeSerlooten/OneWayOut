@@ -22,6 +22,7 @@ public class Glow : MonoBehaviour
     bool shineUp = false;
     bool hasStarted = false;
 
+    [SerializeField] List<Renderer> ignoreGlow;
 
     // Start is called before the first frame update
     void Start()
@@ -37,10 +38,13 @@ public class Glow : MonoBehaviour
             {
                 Renderer r = t.GetComponent<Renderer>();
                 Material[] allMats = t.GetComponent<Renderer>().materials;
-                foreach (Material m in allMats)
+                if(!ignoreGlow.Contains(r))
                 {
-                    mats.Add(m);
-                    m.EnableKeyword("_EMISSION");
+                    foreach (Material m in allMats)
+                    {
+                        mats.Add(m);
+                        m.EnableKeyword("_EMISSION");
+                    }
                 }
                 //Debug.Log("   " + gameObject.name + " " + r.name + " " + "addedMat");
             }

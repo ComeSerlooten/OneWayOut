@@ -5738,12 +5738,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7841122826627849054, guid: 57b8e808c6156de4486ff2bb8b452ea3, type: 3}
       propertyPath: m_Name
-      value: LeafKey Variant
+      value: LeafKey
       objectReference: {fileID: 0}
     - target: {fileID: 8633892905950624395, guid: 57b8e808c6156de4486ff2bb8b452ea3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 5b32f5d4a754d3a4980cebf9bc8e1df3, type: 2}
+    - target: {fileID: 9159909958479334948, guid: 57b8e808c6156de4486ff2bb8b452ea3, type: 3}
+      propertyPath: canGlow
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57b8e808c6156de4486ff2bb8b452ea3, type: 3}
 --- !u!4 &8487047783809745662 stripped

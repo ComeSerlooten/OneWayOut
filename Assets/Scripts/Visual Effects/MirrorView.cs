@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MirrorView : MonoBehaviour
 {
     [SerializeField] Transform cam;
     [SerializeField] Transform observer;
+    public UnityEvent onShot;
+
 
     // Start is called before the first frame update
     void Start()

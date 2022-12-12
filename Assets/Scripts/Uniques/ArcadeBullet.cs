@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class ArcadeBullet : MonoBehaviour
 {
+    [SerializeField] Item mirror;
+    Item lastHitMiror;
     Rigidbody rb;
     public float lifeSpan = 1f;
     public float currentLifeTime = 0;
@@ -15,7 +16,7 @@ public class ArcadeBullet : MonoBehaviour
     public int currentBounces = 0;
     [Space]
     public bool mirrorBounce = false;
-    public UnityEvent onPlayerShot;
+    //public UnityEvent onPlayerShot;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,12 +34,30 @@ public class ArcadeBullet : MonoBehaviour
         if(collision.gameObject.GetComponent<CharacterController>() && mirrorBounce)
         {
             Debug.Log("ShotPlayer");
-            onPlayerShot.Invoke();
+            lastHitMiror.GetComponent<MirrorView>().onShot.Invoke();
+            lastHitMiror.GetComponent<HideInCovers>().ShowUntouched();
         }
 
         //If getComponent Explodable -> Explode and die
+        if(collision.gameObject.GetComponent<Item>())
+        {
+            if (collision.gameObject.GetComponent<Item>().itemName == mirror.itemName)
+            {
+                mirrorBounce = true;
+                lastHitMiror = collision.gameObject.GetComponent<Item>();
+            }
+            else
+            {
+                mirrorBounce = false;
+                lastHitMiror = null;
+            }
+        }
+        else
+        {
+            mirrorBounce = false;
+            lastHitMiror = null;
+        }
 
-        mirrorBounce = collision.gameObject.GetComponent<MirrorView>();
 
         currentBounces++;
         if (currentBounces > bounceAmount) Destroy(this.gameObject);
