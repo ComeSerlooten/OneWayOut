@@ -25,6 +25,11 @@ public class SettingsMenu : MonoBehaviour
 
     void Start()
     {
+        
+    }
+
+    public void init()
+    {
         sens = 0.5f;
         sensiTxt.text = sens.ToString("0.00");
 
@@ -36,11 +41,11 @@ public class SettingsMenu : MonoBehaviour
 
         int curentResolutionIndex = 0;
         int index = 0;
-        foreach(Resolution mRes in resolutions)
+        foreach (Resolution mRes in resolutions)
         {
             resolutionsString.Add(mRes.width + " x " + mRes.height);
 
-            if (mRes.width == Screen.currentResolution.width && 
+            if (mRes.width == Screen.currentResolution.width &&
                 mRes.height == Screen.currentResolution.height)
                 curentResolutionIndex = index;
 
@@ -50,11 +55,6 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropDown.AddOptions(resolutionsString);
         resolutionDropDown.value = curentResolutionIndex;
         resolutionDropDown.RefreshShownValue();
-    }
-
-    public void init()
-    {
-        
     }
 
     public void SetVolume(float volume)
