@@ -10,7 +10,8 @@ public class HideInCovers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!grabber) grabber = GameObject.FindObjectOfType<Grabber>();
+        grabber.onGrab.AddListener(RemoveHeldItems);// += RemoveHeldItems();
     }
 
     public void RemoveHeldItems()

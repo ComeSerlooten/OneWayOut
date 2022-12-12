@@ -98,14 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a0edc097dbaff647b80155f80e0e54d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mirror: {fileID: 1354551036, guid: c6a7812021948074e971446e86020feb, type: 3}
   lifeSpan: 2
   currentLifeTime: 0
   speed: 20
   bounceAmount: 5
   currentBounces: 0
-  onPlayerShot:
-    m_PersistentCalls:
-      m_Calls: []
+  mirrorBounce: 0
 --- !u!54 &1011003812
 Rigidbody:
   m_ObjectHideFlags: 0

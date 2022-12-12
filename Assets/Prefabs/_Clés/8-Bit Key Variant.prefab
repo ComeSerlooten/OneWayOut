@@ -5462,7 +5462,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7841122826627849054, guid: 57b8e808c6156de4486ff2bb8b452ea3, type: 3}
       propertyPath: m_Name
-      value: 8-Bit Key Variant
+      value: 8-Bit Key
+      objectReference: {fileID: 0}
+    - target: {fileID: 9159909958479334948, guid: 57b8e808c6156de4486ff2bb8b452ea3, type: 3}
+      propertyPath: canGlow
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5779605494840905281, guid: 57b8e808c6156de4486ff2bb8b452ea3, type: 3}
