@@ -54,7 +54,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2166531139850364099}
   - component: {fileID: 1114773739493970588}
-  - component: {fileID: 6736231434863590876}
   m_Layer: 10
   m_Name: CandleLight (1)
   m_TagString: Untagged
@@ -139,18 +138,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!122 &6736231434863590876
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2354486635074058067}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4288406783
-  m_Size: -0.05
 --- !u!1 &6316775257304867669
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 954436160299161171}
   - component: {fileID: 2149857149831209931}
-  - component: {fileID: 1077952424514272839}
   m_Layer: 10
   m_Name: CandleLight (2)
   m_TagString: Untagged
@@ -246,18 +232,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!122 &1077952424514272839
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6316775257304867669}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4288406783
-  m_Size: -0.05
 --- !u!1 &6361864610118385978
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,7 +330,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6480932485002912001}
   - component: {fileID: 2992976193325264541}
-  - component: {fileID: 6222370200006673433}
   m_Layer: 10
   m_Name: CandleLight
   m_TagString: Untagged
@@ -441,18 +414,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!122 &6222370200006673433
-Halo:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7387968435084664567}
-  m_Enabled: 1
-  m_Color:
-    serializedVersion: 2
-    rgba: 4288406783
-  m_Size: -0.05
 --- !u!1 &8266949716707160795
 GameObject:
   m_ObjectHideFlags: 0
