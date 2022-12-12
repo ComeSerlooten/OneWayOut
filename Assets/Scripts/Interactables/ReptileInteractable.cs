@@ -29,7 +29,7 @@ public class ReptileInteractable : InteractableObject
         yield return new WaitForSeconds(.5f);
         render.enabled = false;
         GetComponent<Collider>().enabled = false;
-        GameObject dragon = Instantiate(dragonPrefab, transform.position, Quaternion.identity);
+        GameObject dragon = Instantiate(dragonPrefab, transform.position, transform.rotation);
         dragon.GetComponentInChildren<Dragon>().playerSpeed = speed;
         dragon.transform.localScale = .01f * Vector3.one;
         dragon.transform.DOMove(dragonPos.position, 2f).SetEase(Ease.InOutSine);

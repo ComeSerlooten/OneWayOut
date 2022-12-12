@@ -341,12 +341,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8230bb9d3099f044bdc978ced36c4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabBullet: {fileID: 8085059187633512163, guid: 7acfd62910c21444aa8aadf97d25711b, type: 3}
+  bulletExit: {fileID: 6810676531752997513}
   playerCam: {fileID: 0}
   ignoreShotDetect:
     serializedVersion: 2
     m_Bits: 115
   maxDistance: 20
   pointFound: {x: 0, y: 0, z: 0}
+  slowMo: 0
 --- !u!114 &3541341065603132596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +389,7 @@ MonoBehaviour:
   isGlowing: 0
   _target: {fileID: 0}
   mats: []
+  ignoreGlow: []
 --- !u!114 &3541341065603132594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20512329db20094baf6ef3d3fe14122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Arcade Gun
+  itemName: Pistolet d'Arcade
 --- !u!65 &3541341065603132595
 BoxCollider:
   m_ObjectHideFlags: 0

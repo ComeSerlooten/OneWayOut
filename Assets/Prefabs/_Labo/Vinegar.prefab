@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2930216655813921574}
   - component: {fileID: 1103047450721533932}
   m_Layer: 0
-  m_Name: Green_Potion_8(String+Label)
+  m_Name: Flask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20512329db20094baf6ef3d3fe14122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Vinegar
+  itemName: Vinaigre
 --- !u!114 &6214897550370563128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +185,7 @@ MonoBehaviour:
   isGlowing: 0
   _target: {fileID: 0}
   mats: []
+  ignoreGlow: []
 --- !u!114 &4114927123012484689
 MonoBehaviour:
   m_ObjectHideFlags: 0

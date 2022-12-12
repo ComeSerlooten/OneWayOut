@@ -30,9 +30,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 154422307574781492}
-  m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.0405061, y: 0.08, z: -2.9275677}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,7 +99,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300018, guid: 5f3a7deba91ee3341b2266db1be8c0a0, type: 3}
 --- !u!54 &6529256343691342057
@@ -157,6 +157,7 @@ MonoBehaviour:
   isGlowing: 0
   _target: {fileID: 0}
   mats: []
+  ignoreGlow: []
 --- !u!114 &3706719608212210629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,4 +170,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20512329db20094baf6ef3d3fe14122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Bone
+  itemName: Os

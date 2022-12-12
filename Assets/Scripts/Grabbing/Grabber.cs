@@ -37,6 +37,11 @@ public class Grabber : MonoBehaviour
         initialHoldDist = holdPositionner.localPosition.z;
     }
 
+    public void ForceDrop()
+    {
+        Drop(0);
+    }
+
     void AdjustHoldPosition()
     {
         float holdDist = initialHoldDist;

@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20512329db20094baf6ef3d3fe14122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Z-Virus
+  itemName: Virus - Z
 --- !u!54 &2447884727412617562
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -274,6 +274,7 @@ MonoBehaviour:
   isGlowing: 0
   _target: {fileID: 0}
   mats: []
+  ignoreGlow: []
 --- !u!65 &128034748
 BoxCollider:
   m_ObjectHideFlags: 0
