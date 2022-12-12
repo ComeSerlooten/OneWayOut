@@ -22,6 +22,8 @@ public class Glow : MonoBehaviour
     bool shineUp = false;
     bool hasStarted = false;
 
+    [SerializeField] List<Renderer> ignoreGlow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +37,19 @@ public class Glow : MonoBehaviour
             if(t.GetComponent<Renderer>())
             {
                 Renderer r = t.GetComponent<Renderer>();
-                mats.Add(t.GetComponent<Renderer>().material);
-                r.material.EnableKeyword("_EMISSION");
+                Material[] allMats = t.GetComponent<Renderer>().materials;
+                if(!ignoreGlow.Contains(r))
+                {
+                    foreach (Material m in allMats)
+                    {
+                        mats.Add(m);
+                        m.EnableKeyword("_EMISSION");
+                    }
+                }
+                //Debug.Log("   " + gameObject.name + " " + r.name + " " + "addedMat");
             }
         }
+        //Debug.Log(gameObject.name + " " + mats.Count.ToString());
 
         //mat.EnableKeyword("_EMISSION");
         hasStarted = true;
@@ -50,7 +61,7 @@ public class Glow : MonoBehaviour
         glow = false;
         isGlowing = false;
 
-        foreach (Material mat in mats) mat.SetColor("_EmissionColor", glowColor_ * 0);
+        if(canGlow) foreach (Material mat in mats) mat.SetColor("_EmissionColor", glowColor_ * 0);
     }    
 
     float MaxIntensity()
@@ -71,7 +82,7 @@ public class Glow : MonoBehaviour
         isGlowing = true;
         while(glow)
         {
-
+            
             tw = DOTween.To(() => intensity, x => intensity = x, 1, glowTime/2)
                 .SetEase(Ease.InOutSine)
                 .OnComplete(() =>
@@ -106,7 +117,7 @@ public class Glow : MonoBehaviour
                     
                     foreach (Material mat in mats)
                     {
-                        mat.SetColor("_EmissionColor", glowColor_ * 0);
+                        if(canGlow) mat.SetColor("_EmissionColor", glowColor_ * 0);
                         DOTween.Kill(mat);
                     }
                         isGlowing = false;
@@ -118,13 +129,14 @@ public class Glow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isGlowing && canGlow) foreach (Material mat in mats) mat.SetColor("_EmissionColor", glowColor_ * intensity * MaxIntensity() * 0.5f);
         if (glow && !isGlowing)
         {
             StopAllCoroutines();
             StartCoroutine(DoGlow());
         }
 
-        if(isGlowing) foreach (Material mat in mats) mat.SetColor("_EmissionColor", glowColor_ * intensity * MaxIntensity()*0.5f);
+        
     }
 
     private void OnDestroy()

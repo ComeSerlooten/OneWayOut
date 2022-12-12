@@ -2519,7 +2519,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: BoxTest
-  reset: 1
   target_: {fileID: -3038106168681088608, guid: 8e0968081a92368408451975f7075e39, type: 3}
   TriggerSequence:
     m_PersistentCalls:
@@ -2816,7 +2815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: Tape
-  reset: 1
 --- !u!65 &260511153
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2999,7 +2997,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: KeyBox
-  reset: 1
   target_: {fileID: -3038106168681088608, guid: 8e0968081a92368408451975f7075e39, type: 3}
   TriggerSequence:
     m_PersistentCalls:
@@ -4364,7 +4361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db6c963c5883a640b9b371752db70af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menusHandler: {fileID: 1603745856}
+  deathPannel: {fileID: 0}
   spawnPoint: {fileID: 821151323}
   player: {fileID: 79570509}
 --- !u!1 &491494128
@@ -10234,7 +10231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: KeyLock
-  reset: 1
   target_: {fileID: 6199690713561365141, guid: a5640548db8779243a238f8bcb90e7ad, type: 3}
   TriggerSequence:
     m_PersistentCalls:
@@ -10683,7 +10679,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: HammerHandle
-  reset: 1
 --- !u!65 &1374730329
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12718,7 +12713,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: HammerHead
-  reset: 1
 --- !u!1 &1719336699
 GameObject:
   m_ObjectHideFlags: 0
@@ -13064,7 +13058,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemName: KeyTop
-  reset: 1
   target_: {fileID: -7130790151346429970, guid: 25bb924e3c0285c45825b1d40bb5649c, type: 3}
   TriggerSequence:
     m_PersistentCalls:
