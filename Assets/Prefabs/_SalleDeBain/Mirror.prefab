@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20512329db20094baf6ef3d3fe14122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Mirror
+  itemName: Mirroir
 --- !u!114 &1354551037
 MonoBehaviour:
   m_ObjectHideFlags: 0

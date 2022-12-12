@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20512329db20094baf6ef3d3fe14122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: Hydrogen Peroxide
+  itemName: "Peroxide d'Hydrog\xE8ne"
 --- !u!114 &4738554149548067951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +186,7 @@ MonoBehaviour:
   isGlowing: 0
   _target: {fileID: 0}
   mats: []
+  ignoreGlow: []
 --- !u!114 &4738554149548067950
 MonoBehaviour:
   m_ObjectHideFlags: 0
