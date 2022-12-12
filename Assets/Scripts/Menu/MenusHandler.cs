@@ -21,7 +21,7 @@ public class MenusHandler : MonoBehaviour
             {
                 OpenCarnet();
             }
-            else if (Input.GetKeyDown(keyForMenuPause)) //On veut ouvrir le carnet
+            else if (Input.GetKeyDown(keyForMenuPause)) //On veut ouvrir le menu
             {
                 OpenMenu();
             }
