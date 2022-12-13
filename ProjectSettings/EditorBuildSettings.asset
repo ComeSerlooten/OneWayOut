@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Drafts/Menu.unity
     guid: 5cad4d3d5bc9ee84ea9ec0655a2df115
   - enabled: 1
+<<<<<<< Updated upstream
     path: Assets/Scenes/Intro_Scene.unity
     guid: 870aa05d1d684ee4e8cf1c4d171163d6
   - enabled: 1
+=======
+>>>>>>> Stashed changes
     path: Assets/Scenes/Drafts/Baptiste.unity
     guid: 685a2e5f3ff0bbf479a84b2de470e0af
   m_configObjects: {}
