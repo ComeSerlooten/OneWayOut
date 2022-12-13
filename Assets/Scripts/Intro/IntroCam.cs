@@ -7,7 +7,8 @@ public class IntroCam : MonoBehaviour
 {
     [SerializeField] float speed = 2f;
     [SerializeField] float endPosZ = 45;
-    [SerializeField] Scene mainGame;
+    [SerializeField] bool doSceneChange = false;
+    [SerializeField] bool doMove = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,7 +18,15 @@ public class IntroCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.forward * speed * Time.deltaTime;
-        if (transform.position.z >= endPosZ) SceneManager.LoadScene(mainGame.name);
+        if (doMove) transform.position += Vector3.forward * speed * Time.deltaTime;
+
+        if (transform.position.z >= endPosZ && doMove)
+        {
+            if (doSceneChange) SceneManager.LoadScene("Assets/Scenes/Drafts/Baptiste.unity");
+            else
+            {
+                doMove = false;
+            }
+        }
     }
 }

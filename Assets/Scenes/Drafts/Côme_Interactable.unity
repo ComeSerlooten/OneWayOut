@@ -8287,6 +8287,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2412928209661565309, guid: 3842bc3e5ab052c479440a9b1dbc8237, type: 3}
+      propertyPath: spillAngleRatio
+      value: 0.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3842bc3e5ab052c479440a9b1dbc8237, type: 3}
 --- !u!1001 &2464885228541085674
