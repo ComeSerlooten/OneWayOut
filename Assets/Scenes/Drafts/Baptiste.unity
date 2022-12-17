@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -62421,6 +62421,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 961760895366802091, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961760895366802091, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961760895366802091, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1856770169}
+    - target: {fileID: 961760895366802091, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 961760895366802091, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 961760895366802091, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MenusHandler, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 961760895366802091, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2264247194635410759, guid: f59007cd837c5f04c8b9391438068078, type: 3}
       propertyPath: mouseSensitivity
       value: 1000
@@ -62475,6 +62503,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+--- !u!114 &1856770169 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1275420505410264267, guid: f59007cd837c5f04c8b9391438068078, type: 3}
+  m_PrefabInstance: {fileID: 1856770168}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5561b4f7d77e74f8ad72c17d3a0714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1856981696
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -107,4 +107,9 @@ public class MenusHandler : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
 }
