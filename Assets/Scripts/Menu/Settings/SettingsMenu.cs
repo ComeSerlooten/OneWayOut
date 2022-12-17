@@ -20,7 +20,8 @@ public class SettingsMenu : MonoBehaviour
     private void Awake()
     {
         mouseLook = FindObjectOfType(typeof(MouseLook)) as MouseLook;
-        sens = mouseLook.GetMouseSensitivity();
+        if(mouseLook!=null)
+            sens = mouseLook.GetMouseSensitivity();
     }
 
     void Start()
@@ -74,7 +75,8 @@ public class SettingsMenu : MonoBehaviour
         sens = value;
         Debug.Log("Sensitivity is set to : " + sens);
         sensiTxt.text = sens.ToString();
-        mouseLook.SetMouseSensitivity(sens);
+        if (mouseLook != null)
+            mouseLook.SetMouseSensitivity(sens);
     }
 
     public void SetResolution(int index)

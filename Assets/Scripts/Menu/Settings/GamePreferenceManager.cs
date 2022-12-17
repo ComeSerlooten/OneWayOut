@@ -19,7 +19,6 @@ public class GamePreferenceManager : MonoBehaviour
     public TMPro.TMP_Dropdown graphicDropDown;
     public AudioMixer audioMixer;
     public Slider sliderVolume;//set
-    public MouseLook mouseLook;
     public Slider sliderSens;
 
     public SettingsMenu settingsMenu;
@@ -45,7 +44,7 @@ public class GamePreferenceManager : MonoBehaviour
         audioMixer.GetFloat("MainVolume", out volume); //Mathf.Log10(volume) * 20
         volume = Mathf.Pow(10, volume / 20);
         PlayerPrefs.SetFloat(VolumeKey, volume);
-        PlayerPrefs.SetFloat(SensitivityKey, (float)mouseLook.GetMouseSensitivity());
+        PlayerPrefs.SetFloat(SensitivityKey, (float)sliderSens.value);
         Debug.Log("SAVED PLAYER PREF");
     }
 
