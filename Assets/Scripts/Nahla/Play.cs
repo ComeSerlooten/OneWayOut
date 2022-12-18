@@ -7,7 +7,7 @@ public class Play : MonoBehaviour
 {
    public void PlayButton() {
 
-        SceneManager.LoadScene("Baptiste");
+        SceneManager.LoadScene("Assets/Scenes/Intro_Scene.unity");
     
     }
 }
